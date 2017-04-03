@@ -1,0 +1,4518 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/vitaly-t/pg-promise"
+
+    >pg-promise (v5.6.4)</a>
+</h1>
+<h4>Promises interface for PostgreSQL</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise">module pg-promise</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.ParameterizedQuery">
+            function <span class="apidocSignatureSpan">pg-promise.</span>ParameterizedQuery
+            <span class="apidocSignatureSpan">(text, values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.PreparedStatement">
+            function <span class="apidocSignatureSpan">pg-promise.</span>PreparedStatement
+            <span class="apidocSignatureSpan">(name, text, values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.PromiseAdapter">
+            function <span class="apidocSignatureSpan">pg-promise.</span>PromiseAdapter
+            <span class="apidocSignatureSpan">(create, resolve, reject)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.QueryFile">
+            function <span class="apidocSignatureSpan">pg-promise.</span>QueryFile
+            <span class="apidocSignatureSpan">(file, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.ParameterizedQueryError">
+            function <span class="apidocSignatureSpan">pg-promise.</span>errors.ParameterizedQueryError
+            <span class="apidocSignatureSpan">(error, ps)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.PreparedStatementError">
+            function <span class="apidocSignatureSpan">pg-promise.</span>errors.PreparedStatementError
+            <span class="apidocSignatureSpan">(error, ps)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryFileError">
+            function <span class="apidocSignatureSpan">pg-promise.</span>errors.QueryFileError
+            <span class="apidocSignatureSpan">(error, qf)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryResultError">
+            function <span class="apidocSignatureSpan">pg-promise.</span>errors.QueryResultError
+            <span class="apidocSignatureSpan">(code, result, query, values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify">
+            function <span class="apidocSignatureSpan">pg-promise.</span>minify
+            <span class="apidocSignatureSpan">(sql, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify.SQLParsingError">
+            function <span class="apidocSignatureSpan">pg-promise.</span>minify.SQLParsingError
+            <span class="apidocSignatureSpan">(code, position)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>ParameterizedQuery.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>PreparedStatement.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>QueryFile.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>array</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>as</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>errors</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>errors.ParameterizedQueryError.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>errors.PreparedStatementError.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>errors.QueryFileError.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>errors.QueryResultError.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>events</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>formatting</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>minify.SQLParsingError.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>queryResult</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>special</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>txMode</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.ParameterizedQuery">module pg-promise.ParameterizedQuery</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.ParameterizedQuery.ParameterizedQuery">
+            function <span class="apidocSignatureSpan">pg-promise.</span>ParameterizedQuery
+            <span class="apidocSignatureSpan">(text, values)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.ParameterizedQuery.prototype">module pg-promise.ParameterizedQuery.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.ParameterizedQuery.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.ParameterizedQuery.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.PreparedStatement">module pg-promise.PreparedStatement</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.PreparedStatement.PreparedStatement">
+            function <span class="apidocSignatureSpan">pg-promise.</span>PreparedStatement
+            <span class="apidocSignatureSpan">(name, text, values)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.PreparedStatement.prototype">module pg-promise.PreparedStatement.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.PreparedStatement.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.PreparedStatement.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.QueryFile">module pg-promise.QueryFile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.QueryFile.QueryFile">
+            function <span class="apidocSignatureSpan">pg-promise.</span>QueryFile
+            <span class="apidocSignatureSpan">(file, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.QueryFile.prototype">module pg-promise.QueryFile.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.QueryFile.prototype.inspect">
+            function <span class="apidocSignatureSpan">pg-promise.QueryFile.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.QueryFile.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.QueryFile.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.array">module pg-promise.array</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.array.countIf">
+            function <span class="apidocSignatureSpan">pg-promise.array.</span>countIf
+            <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.array.filter">
+            function <span class="apidocSignatureSpan">pg-promise.array.</span>filter
+            <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.array.forEach">
+            function <span class="apidocSignatureSpan">pg-promise.array.</span>forEach
+            <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.array.map">
+            function <span class="apidocSignatureSpan">pg-promise.array.</span>map
+            <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.as">module pg-promise.as</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.array">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>array
+            <span class="apidocSignatureSpan">(arr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.bool">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>bool
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.buffer">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>buffer
+            <span class="apidocSignatureSpan">(obj, raw)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.csv">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>csv
+            <span class="apidocSignatureSpan">(resolveFunc(values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.date">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>date
+            <span class="apidocSignatureSpan">(d, raw)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.format">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>format
+            <span class="apidocSignatureSpan">(query, values, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.func">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>func
+            <span class="apidocSignatureSpan">(func, raw, obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.json">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>json
+            <span class="apidocSignatureSpan">(obj, raw)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.name">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>name
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.number">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>number
+            <span class="apidocSignatureSpan">(num)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.text">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>text
+            <span class="apidocSignatureSpan">(value, raw)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.as.value">
+            function <span class="apidocSignatureSpan">pg-promise.as.</span>value
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors">module pg-promise.errors</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.ParameterizedQueryError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>ParameterizedQueryError
+            <span class="apidocSignatureSpan">(error, ps)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.PreparedStatementError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>PreparedStatementError
+            <span class="apidocSignatureSpan">(error, ps)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryFileError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryFileError
+            <span class="apidocSignatureSpan">(error, qf)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryResultError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryResultError
+            <span class="apidocSignatureSpan">(code, result, query, values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.errors.</span>queryResultErrorCode</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.ParameterizedQueryError">module pg-promise.errors.ParameterizedQueryError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.ParameterizedQueryError.ParameterizedQueryError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>ParameterizedQueryError
+            <span class="apidocSignatureSpan">(error, ps)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.ParameterizedQueryError.prototype">module pg-promise.errors.ParameterizedQueryError.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.ParameterizedQueryError.prototype.inspect">
+            function <span class="apidocSignatureSpan">pg-promise.errors.ParameterizedQueryError.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.ParameterizedQueryError.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.errors.ParameterizedQueryError.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.PreparedStatementError">module pg-promise.errors.PreparedStatementError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.PreparedStatementError.PreparedStatementError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>PreparedStatementError
+            <span class="apidocSignatureSpan">(error, ps)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.PreparedStatementError.prototype">module pg-promise.errors.PreparedStatementError.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.PreparedStatementError.prototype.inspect">
+            function <span class="apidocSignatureSpan">pg-promise.errors.PreparedStatementError.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.PreparedStatementError.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.errors.PreparedStatementError.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.QueryFileError">module pg-promise.errors.QueryFileError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryFileError.QueryFileError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryFileError
+            <span class="apidocSignatureSpan">(error, qf)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.QueryFileError.prototype">module pg-promise.errors.QueryFileError.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryFileError.prototype.inspect">
+            function <span class="apidocSignatureSpan">pg-promise.errors.QueryFileError.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryFileError.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.errors.QueryFileError.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.QueryResultError">module pg-promise.errors.QueryResultError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryResultError.QueryResultError">
+            function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryResultError
+            <span class="apidocSignatureSpan">(code, result, query, values)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.errors.QueryResultError.prototype">module pg-promise.errors.QueryResultError.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryResultError.prototype.inspect">
+            function <span class="apidocSignatureSpan">pg-promise.errors.QueryResultError.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.errors.QueryResultError.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.errors.QueryResultError.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.events">module pg-promise.events</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.connect">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>connect
+            <span class="apidocSignatureSpan">(ctx, client, isFresh)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.disconnect">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>disconnect
+            <span class="apidocSignatureSpan">(ctx, client)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.error">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>error
+            <span class="apidocSignatureSpan">(options, err, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.extend">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>extend
+            <span class="apidocSignatureSpan">(options, obj, dc)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.query">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>query
+            <span class="apidocSignatureSpan">(options, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.receive">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>receive
+            <span class="apidocSignatureSpan">(options, data, result, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.task">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>task
+            <span class="apidocSignatureSpan">(options, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.transact">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>transact
+            <span class="apidocSignatureSpan">(options, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.events.unexpected">
+            function <span class="apidocSignatureSpan">pg-promise.events.</span>unexpected
+            <span class="apidocSignatureSpan">(event, e)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.formatting">module pg-promise.formatting</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.formatting.formatFunction">
+            function <span class="apidocSignatureSpan">pg-promise.formatting.</span>formatFunction
+            <span class="apidocSignatureSpan">(funcName, values, capSQL)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.formatting.formatQuery">
+            function <span class="apidocSignatureSpan">pg-promise.formatting.</span>formatQuery
+            <span class="apidocSignatureSpan">(query, values, raw, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.formatting.</span>as</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.minify">module pg-promise.minify</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify.minify">
+            function <span class="apidocSignatureSpan">pg-promise.</span>minify
+            <span class="apidocSignatureSpan">(sql, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify.SQLParsingError">
+            function <span class="apidocSignatureSpan">pg-promise.minify.</span>SQLParsingError
+            <span class="apidocSignatureSpan">(code, position)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.minify.</span>parsingErrorCode</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.minify.SQLParsingError">module pg-promise.minify.SQLParsingError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify.SQLParsingError.SQLParsingError">
+            function <span class="apidocSignatureSpan">pg-promise.minify.</span>SQLParsingError
+            <span class="apidocSignatureSpan">(code, position)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.minify.SQLParsingError.prototype">module pg-promise.minify.SQLParsingError.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify.SQLParsingError.prototype.inspect">
+            function <span class="apidocSignatureSpan">pg-promise.minify.SQLParsingError.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.minify.SQLParsingError.prototype.toString">
+            function <span class="apidocSignatureSpan">pg-promise.minify.SQLParsingError.prototype.</span>toString
+            <span class="apidocSignatureSpan">(level)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.special">module pg-promise.special</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.special.SpecialQuery">
+            function <span class="apidocSignatureSpan">pg-promise.special.</span>SpecialQuery
+            <span class="apidocSignatureSpan">(type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.special.</span>cache</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.txMode">module pg-promise.txMode</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.txMode.TransactionMode">
+            function <span class="apidocSignatureSpan">pg-promise.txMode.</span>TransactionMode
+            <span class="apidocSignatureSpan">(tiLevel, readOnly, deferrable)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pg-promise.txMode.</span>isolationLevel</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pg-promise.utils">module pg-promise.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.utils.buildSqlModule">
+            function <span class="apidocSignatureSpan">pg-promise.utils.</span>buildSqlModule
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.utils.camelize">
+            function <span class="apidocSignatureSpan">pg-promise.utils.</span>camelize
+            <span class="apidocSignatureSpan">(text)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.utils.camelizeVar">
+            function <span class="apidocSignatureSpan">pg-promise.utils.</span>camelizeVar
+            <span class="apidocSignatureSpan">(text)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.utils.enumSql">
+            function <span class="apidocSignatureSpan">pg-promise.utils.</span>enumSql
+            <span class="apidocSignatureSpan">(dir, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pg-promise.utils.objectToCode">
+            function <span class="apidocSignatureSpan">pg-promise.utils.</span>objectToCode
+            <span class="apidocSignatureSpan">(obj, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise" id="apidoc.module.pg-promise">module pg-promise</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.ParameterizedQuery" id="apidoc.element.pg-promise.ParameterizedQuery">
+        function <span class="apidocSignatureSpan">pg-promise.</span>ParameterizedQuery
+        <span class="apidocSignatureSpan">(text, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParameterizedQuery(text, values) {
+    if (!(this instanceof ParameterizedQuery)) {
+        return new ParameterizedQuery(text, values);
+    }
+
+    var currentError, PQ = {}, changed = true, state = {
+        text: text,
+        binary: undefined,
+        rowMode: undefined
+    };
+
+    function setValues(v) {
+        if (Array.isArray(v)) {
+            if (v.length) {
+                PQ.values = v;
+            } else {
+                delete PQ.values;
+            }
+        } else {
+            if ($npm.utils.isNull(v)) {
+                delete PQ.values;
+            } else {
+                PQ.values = [v];
+            }
+        }
+    }
+
+    setValues(values);
+
+    /**
+     * @name ParameterizedQuery#text
+     * @type {string|QueryFile}
+     * @description
+     * A non-empty query string or a {@link QueryFile} object.
+     */
+    Object.defineProperty(this, &#x27;text&#x27;, {
+        get: () =&#x3e; state.text,
+        set: value =&#x3e; {
+            if (value !== state.text) {
+                state.text = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#values
+     * @type {array}
+     * @description
+     * Query formatting parameters, depending on the type:
+     *
+     * - `null` / `undefined` means the query has no formatting parameters
+     * - `Array` - it is an array of formatting parameters
+     * - None of the above, means it is a single formatting value, which
+     *   is then automatically wrapped into an array
+     */
+    Object.defineProperty(this, &#x27;values&#x27;, {
+        get: () =&#x3e; PQ.values,
+        set: value =&#x3e; {
+            setValues(value);
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#binary
+     * @type {boolean}
+     * @default undefined
+     * @description
+     * Activates binary result mode. The default is the text mode.
+     *
+     * @see {@link http://www.postgresql.org/docs/devel/static/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY Extended Query}
+     */
+    Object.defineProperty(this, &#x27;binary&#x27;, {
+        get: () =&#x3e; state.binary,
+        set: value =&#x3e; {
+            if (value !== state.binary) {
+                state.binary = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#rowMode
+     * @type {string}
+     * @default undefined
+     * @description
+     * Changes the way data arrives to the client, with only one value supported by $[pg]:
+     *  - `rowMode = &#x27;array&#x27;` will make all data rows arrive as arrays of values.
+     *    By default, rows arrive as objects.
+     */
+    Object.defineProperty(this, &#x27;rowMode&#x27;, {
+        get: () =&#x3e; state.rowMode,
+        set: value =&#x3e; {
+            if (value !== state.rowMode) {
+                state.rowMode = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#error
+     * @type {errors.ParameterizedQueryError}
+     * @default undefined
+     * @readonly
+     * @description
+     * When in an error state, it is set to a {@link errors.ParameterizedQueryError ParameterizedQueryError} object. Otherwise,
+it is `undefined`.
+     *
+     * This property is primarily for internal use by the library.
+     */
+    Object.defineProperty(this, &#x27;error&#x27;, {
+        get: () =&#x3e; currentError
+    });
+
+    if ($npm.utils.isObject(text, [&#x27;text&#x27;])) {
+        state.text = text.text;
+        state.binary = text.binary;
+        state.rowMode = text.rowMode;
+        setValues(text.values);
+    }
+
+    /**
+     * @method ParameterizedQuery.parse
+     * @description
+     * Parses the current object and returns a simple `{text, values}`, if successful,
+     * or else it returns a {@link errors.ParameterizedQueryError ParameterizedQueryError} object.
+     *
+     * This method is primarily for internal use by the library.
+     *
+     * @returns {{text, values}|errors.ParameterizedQueryError}
+     */
+    this.parse = () =&#x3e; {
+
+        var qf = state.text instanceof $npm.QueryFile ? s ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.PreparedStatement" id="apidoc.element.pg-promise.PreparedStatement">
+        function <span class="apidocSignatureSpan">pg-promise.</span>PreparedStatement
+        <span class="apidocSignatureSpan">(name, text, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PreparedStatement(name, text, values) {
+    if (!(this instanceof PreparedStatement)) {
+        return new PreparedStatement(name, text, values);
+    }
+
+    var currentError, PS = {}, changed = true, state = {
+        name: name,
+        text: text,
+        binary: undefined,
+        rowMode: undefined,
+        rows: undefined
+    };
+
+    function setValues(v) {
+        if (Array.isArray(v)) {
+            if (v.length) {
+                PS.values = v;
+            } else {
+                delete PS.values;
+            }
+        } else {
+            if ($npm.utils.isNull(v)) {
+                delete PS.values;
+            } else {
+                PS.values = [v];
+            }
+        }
+    }
+
+    setValues(values);
+
+    /**
+     * @name PreparedStatement#name
+     * @type {string}
+     * @description
+     * An arbitrary name given to this particular prepared statement. It must be unique within a single session and is
+     * subsequently used to execute or deallocate a previously prepared statement.
+     */
+    Object.defineProperty(this, &#x27;name&#x27;, {
+        get: () =&#x3e; state.name,
+        set: value =&#x3e; {
+            if (value !== state.name) {
+                state.name = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#text
+     * @type {string|QueryFile}
+     * @description
+     * A non-empty query string or a {@link QueryFile} object.
+     *
+     * Changing this property for the same {@link PreparedStatement#name name} will have no effect, because queries
+     * for Prepared Statements are cached, with {@link PreparedStatement#name name} being the cache key.
+     */
+    Object.defineProperty(this, &#x27;text&#x27;, {
+        get: () =&#x3e; state.text,
+        set: value =&#x3e; {
+            if (value !== state.text) {
+                state.text = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#values
+     * @type {array}
+     * @description
+     * Query formatting parameters, depending on the type:
+     *
+     * - `null` / `undefined` means the query has no formatting parameters
+     * - `Array` - it is an array of formatting parameters
+     * - None of the above, means it is a single formatting value, which
+     *   is then automatically wrapped into an array
+     */
+    Object.defineProperty(this, &#x27;values&#x27;, {
+        get: () =&#x3e; PS.values,
+        set: value =&#x3e; {
+            setValues(value);
+        }
+    });
+
+    /**
+     * @name PreparedStatement#binary
+     * @type {boolean}
+     * @default undefined
+     * @description
+     * Activates binary result mode. The default is the text mode.
+     *
+     * @see {@link http://www.postgresql.org/docs/devel/static/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY Extended Query}
+     */
+    Object.defineProperty(this, &#x27;binary&#x27;, {
+        get: () =&#x3e; state.binary,
+        set: value =&#x3e; {
+            if (value !== state.binary) {
+                state.binary = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#rowMode
+     * @type {string}
+     * @default undefined
+     * @description
+     * Changes the way data arrives to the client, with only one value supported by $[pg]:
+     *  - `rowMode = &#x27;array&#x27;` will make all data rows arrive as arrays of values.
+     *    By default, rows arrive as objects.
+     */
+    Object.defineProperty(this, &#x27;rowMode&#x27;, {
+        get: () =&#x3e; state.rowMode,
+        set: value =&#x3e; {
+            if (value !== state.rowMode) {
+                state.rowMode = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#rows
+     * @type {number}
+     * @description
+     * Number of rows to return at a time from a Prepared Statement&#x27;s portal.
+     * The default is 0, which means that all rows must be returned at once.
+     */
+    Object.defineProperty(this, &#x27;rows&#x27;, {
+        get: () =&#x3e; state.rows,
+        set: val ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.PromiseAdapter" id="apidoc.element.pg-promise.PromiseAdapter">
+        function <span class="apidocSignatureSpan">pg-promise.</span>PromiseAdapter
+        <span class="apidocSignatureSpan">(create, resolve, reject)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PromiseAdapter(create, resolve, reject) {
+
+    if (!(this instanceof PromiseAdapter)) {
+        return new PromiseAdapter(create, resolve, reject);
+    }
+
+    this.create = create;
+    this.resolve = resolve;
+    this.reject = reject;
+
+    if (typeof create !== &#x27;function&#x27;) {
+        throw new TypeError(&#x27;Adapter requires a function to create a promise.&#x27;);
+    }
+
+    if (typeof resolve !== &#x27;function&#x27;) {
+        throw new TypeError(&#x27;Adapter requires a function to resolve a promise.&#x27;);
+    }
+
+    if (typeof reject !== &#x27;function&#x27;) {
+        throw new TypeError(&#x27;Adapter requires a function to reject a promise.&#x27;);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.QueryFile" id="apidoc.element.pg-promise.QueryFile">
+        function <span class="apidocSignatureSpan">pg-promise.</span>QueryFile
+        <span class="apidocSignatureSpan">(file, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryFile(file, options) {
+
+    if (!(this instanceof QueryFile)) {
+        return new QueryFile(file, options);
+    }
+
+    var sql, error, ready, modTime, after, filePath = file, opt = {
+        debug: $npm.utils.isDev(),
+        minify: false,
+        compress: false
+    };
+
+    if (options &#x26;&#x26; typeof options === &#x27;object&#x27;) {
+        if (options.debug !== undefined) {
+            opt.debug = !!options.debug;
+        }
+        if (options.minify !== undefined) {
+            after = options.minify === &#x27;after&#x27;;
+            opt.minify = after ? &#x27;after&#x27; : !!options.minify;
+        }
+        if (options.compress !== undefined) {
+            opt.compress = !!options.compress;
+        }
+        if (opt.compress &#x26;&#x26; options.minify === undefined) {
+            opt.minify = true;
+        }
+        if (options.params !== undefined) {
+            opt.params = options.params;
+        }
+    }
+
+    Object.freeze(opt);
+
+    if ($npm.utils.isText(filePath) &#x26;&#x26; !$npm.utils.isPathAbsolute(filePath)) {
+        filePath = $npm.path.join($npm.utils.startDir, filePath);
+    }
+
+    // Custom Type Formatting support:
+    this.formatDBType = function () {
+        this.prepare(true);
+        return this.query;
+    };
+
+    /**
+     * @method QueryFile.prepare
+     * @summary Prepares the query for execution.
+     * @description
+     * If the the query hasn&#x27;t been prepared yet, it will read the file and process the contents according
+     * to the parameters passed into the constructor.
+     *
+     * This method is primarily for internal use by the library.
+     *
+     * @param {boolean} [throwErrors=false]
+     * Throw any error encountered.
+     *
+     */
+    this.prepare = function (throwErrors) {
+        var lastMod;
+        if (opt.debug &#x26;&#x26; ready) {
+            try {
+                lastMod = $npm.fs.statSync(filePath).mtime.getTime();
+                if (lastMod === modTime) {
+                    // istanbul ignore next;
+                    // coverage for this works differently under Windows and Linux
+                    return;
+                }
+                ready = false;
+            } catch (e) {
+                sql = undefined;
+                ready = false;
+                error = e;
+                if (throwErrors) {
+                    throw error;
+                }
+                return;
+            }
+        }
+        if (ready) {
+            return;
+        }
+        try {
+            sql = $npm.fs.readFileSync(filePath, &#x27;utf8&#x27;);
+            modTime = lastMod || $npm.fs.statSync(filePath).mtime.getTime();
+            if (opt.minify &#x26;&#x26; !after) {
+                sql = $npm.minify(sql, {compress: opt.compress});
+            }
+            if (opt.params !== undefined) {
+                sql = $npm.format(sql, opt.params, {partial: true});
+            }
+            if (opt.minify &#x26;&#x26; after) {
+                sql = $npm.minify(sql, {compress: opt.compress});
+            }
+            ready = true;
+            error = undefined;
+        } catch (e) {
+            sql = undefined;
+            error = new $npm.QueryFileError(e, this);
+            if (throwErrors) {
+                throw error;
+            }
+        }
+    };
+
+    /**
+     * @name QueryFile#query
+     * @type {string}
+     * @default undefined
+     * @readonly
+     * @summary Prepared query string.
+     * @description
+     * When property {@link QueryFile#error error} is set, the query is `undefined`.
+     *
+     * This property is primarily for internal use by the library.
+     */
+    Object.defineProperty(this, &#x27;query&#x27;, {
+        get: () =&#x3e; sql
+    });
+
+    /**
+     * @name QueryFile#error
+     * @type {errors.QueryFileError}
+     * @default undefined
+     * @readonly
+     * @description
+     * When in an error state, it is set to a {@link errors.QueryFileError QueryFileError} object. Otherwise, it is `undefined`.
+     *
+     * This property is primarily for internal use by the library.
+     */
+    Object.defineProperty(this, &#x27;error&#x27;, { ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Example:
+
+```js
+// Helper for linking to external query files:
+function sql(file) {
+// consider using here: path.join(__dirname, file)
+return new pgp.<span class="apidocCodeKeywordSpan">QueryFile</span>(file, {minify: true});
+}
+
+// Create QueryFile globally, once per file:
+var sqlFindUser = sql(&#x27;./sql/findUser.sql&#x27;);
+
+db.one(sqlFindUser, {id: 123})
+.then(user=&#x3e; {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.ParameterizedQueryError" id="apidoc.element.pg-promise.errors.ParameterizedQueryError">
+        function <span class="apidocSignatureSpan">pg-promise.</span>errors.ParameterizedQueryError
+        <span class="apidocSignatureSpan">(error, ps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParameterizedQueryError(error, ps) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;ParameterizedQueryError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.QueryFileError) {
+        this.error = error;
+        this.message = &#x27;Failed to initialize \&#x27;text\&#x27; from a QueryFile.&#x27;;
+    } else {
+        this.message = error;
+    }
+    this.result = ps;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.PreparedStatementError" id="apidoc.element.pg-promise.errors.PreparedStatementError">
+        function <span class="apidocSignatureSpan">pg-promise.</span>errors.PreparedStatementError
+        <span class="apidocSignatureSpan">(error, ps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PreparedStatementError(error, ps) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;PreparedStatementError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.QueryFileError) {
+        this.error = error;
+        this.message = &#x27;Failed to initialize \&#x27;text\&#x27; from a QueryFile.&#x27;;
+    } else {
+        this.message = error;
+    }
+    this.result = ps;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryFileError" id="apidoc.element.pg-promise.errors.QueryFileError">
+        function <span class="apidocSignatureSpan">pg-promise.</span>errors.QueryFileError
+        <span class="apidocSignatureSpan">(error, qf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryFileError(error, qf) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;QueryFileError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.minify.SQLParsingError) {
+        this.error = error;
+        this.message = &#x27;Failed to parse the SQL.&#x27;;
+    } else {
+        this.message = error.message;
+    }
+    this.file = qf.file;
+    this.options = qf.options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryResultError" id="apidoc.element.pg-promise.errors.QueryResultError">
+        function <span class="apidocSignatureSpan">pg-promise.</span>errors.QueryResultError
+        <span class="apidocSignatureSpan">(code, result, query, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryResultError(code, result, query, values) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;QueryResultError&#x27;;
+    this.stack = temp.stack;
+    this.message = errorMessages[code].message;
+    this.code = code;
+    this.result = result;
+    this.query = query;
+    this.values = values;
+    this.received = result.rows.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify" id="apidoc.element.pg-promise.minify">
+        function <span class="apidocSignatureSpan">pg-promise.</span>minify
+        <span class="apidocSignatureSpan">(sql, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function minify(sql, options) {
+
+    if (typeof sql !== &#x27;string&#x27;) {
+        throw new TypeError(&#x22;Input SQL must be a text string.&#x22;);
+    }
+
+    if (options !== undefined &#x26;&#x26; typeof options !== &#x27;object&#x27;) {
+        throw new TypeError(&#x22;Parameter &#x27;options&#x27; must be an object.&#x22;);
+    }
+
+    if (!sql.length) {
+        return &#x27;&#x27;;
+    }
+
+    var idx = 0, // current index
+        result = &#x27;&#x27;, // resulting sql
+        len = sql.length, // sql length
+        EOL = getEOL(sql), // end-of-line
+        space = false, // add a space on the next step
+        compress = options &#x26;&#x26; options.compress; // option &#x27;compress&#x27;
+
+    do {
+        var s = sql[idx], // current symbol;
+            s1 = idx &#x3c; len - 1 ? sql[idx + 1] : &#x27;&#x27;; // next symbol;
+
+        if (isGap(s)) {
+            while (++idx &#x3c; len &#x26;&#x26; isGap(sql[idx]));
+            if (idx &#x3c; len) {
+                space = true;
+            }
+            idx--;
+            continue;
+        }
+
+        if (s === &#x27;-&#x27; &#x26;&#x26; s1 === &#x27;-&#x27;) {
+            var lb = sql.indexOf(EOL, idx + 2);
+            if (lb &#x3c; 0) {
+                break;
+            }
+            idx = lb - 1;
+            skipGaps();
+            continue;
+        }
+
+        if (s === &#x27;/&#x27; &#x26;&#x26; s1 === &#x27;*&#x27;) {
+            var end = sql.indexOf(&#x27;*/&#x27;, idx + 2);
+            if (end &#x3c; 0) {
+                throwError(PEC.unclosedMLC);
+            }
+            idx = end + 1;
+            skipGaps();
+            continue;
+        }
+
+        if (s === &#x27;&#x22;&#x27;) {
+            var closeIdx = sql.indexOf(&#x27;&#x22;&#x27;, idx + 1);
+            if (closeIdx &#x3c; 0) {
+                throwError(PEC.unclosedQI);
+            }
+            var text = sql.substr(idx, closeIdx - idx + 1);
+            if (text.indexOf(EOL) &#x3e; 0) {
+                throwError(PEC.multiLineQI);
+            }
+            if (compress) {
+                space = false;
+            }
+            addSpace();
+            result += text;
+            idx = closeIdx;
+            skipGaps();
+            continue;
+        }
+
+        if (s === &#x27;\&#x27;&#x27;) {
+            var closeIdx = idx;
+            do {
+                closeIdx = sql.indexOf(&#x27;\&#x27;&#x27;, closeIdx + 1);
+                if (closeIdx &#x3e; 0) {
+                    var step = closeIdx;
+                    while (++step &#x3c; len &#x26;&#x26; sql[step] === &#x27;\&#x27;&#x27;);
+                    if ((step - closeIdx) % 2) {
+                        closeIdx = step - 1;
+                        break;
+                    }
+                    closeIdx = step === len ? -1 : step;
+                }
+            } while (closeIdx &#x3e; 0);
+            if (closeIdx &#x3c; 0) {
+                throwError(PEC.unclosedText);
+            }
+            if (compress) {
+                space = false;
+            }
+            addSpace();
+            var text = sql.substr(idx, closeIdx - idx + 1);
+            var hasLB = text.indexOf(EOL) &#x3e; 0;
+            if (hasLB) {
+                text = text.split(EOL).map(function (m) {
+                    return m.replace(/^\s+|\s+$/g, &#x27;&#x27;);
+                }).join(&#x27;\\n&#x27;);
+            }
+            var hasTabs = text.indexOf(&#x27;\t&#x27;) &#x3e; 0;
+            if (hasLB || hasTabs) {
+                var prev = idx ? sql[idx - 1] : &#x27;&#x27;;
+                if (prev !== &#x27;E&#x27; &#x26;&#x26; prev !== &#x27;e&#x27;) {
+                    var r = result ? result[result.length - 1] : &#x27;&#x27;;
+                    if (r &#x26;&#x26; r !== &#x27; &#x27; &#x26;&#x26; compressors.indexOf(r) &#x3c; 0) {
+                        result += &#x27; &#x27;;
+                    }
+                    result += &#x27;E&#x27;;
+                }
+                if (hasTabs) {
+                    text = text.replace(/\t/g, &#x27;\\t&#x27;);
+                }
+            }
+            result += text;
+            idx = closeIdx;
+            skipGaps();
+            continue;
+        }
+
+        if (compress &#x26;&#x26; compressors.indexOf(s) &#x3e;= 0) {
+            space = false;
+            skipGaps();
+        }
+
+        addSpace();
+        result += s;
+
+    } while (++idx &#x3c; len);
+
+    return result;
+
+    function skipGaps() {
+        if (compress) {
+            while (idx &#x3c; len - 1 &#x26;&#x26; isGap(sql[id ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify.SQLParsingError" id="apidoc.element.pg-promise.minify.SQLParsingError">
+        function <span class="apidocSignatureSpan">pg-promise.</span>minify.SQLParsingError
+        <span class="apidocSignatureSpan">(code, position)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SQLParsingError(code, position) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;SQLParsingError&#x27;;
+    this.stack = temp.stack;
+    this.code = code; // one of parsingErrorCode values;
+    this.error = errorMessages[code].message;
+    this.position = position; // Error position in the text: {line, column}
+    this.message = &#x22;Error parsing SQL at {line:&#x22; + position.line + &#x22;,col:&#x22; + position.column + &#x22;}: &#x22; + this.error;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.ParameterizedQuery" id="apidoc.module.pg-promise.ParameterizedQuery">module pg-promise.ParameterizedQuery</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.ParameterizedQuery.ParameterizedQuery" id="apidoc.element.pg-promise.ParameterizedQuery.ParameterizedQuery">
+        function <span class="apidocSignatureSpan">pg-promise.</span>ParameterizedQuery
+        <span class="apidocSignatureSpan">(text, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParameterizedQuery(text, values) {
+    if (!(this instanceof ParameterizedQuery)) {
+        return new ParameterizedQuery(text, values);
+    }
+
+    var currentError, PQ = {}, changed = true, state = {
+        text: text,
+        binary: undefined,
+        rowMode: undefined
+    };
+
+    function setValues(v) {
+        if (Array.isArray(v)) {
+            if (v.length) {
+                PQ.values = v;
+            } else {
+                delete PQ.values;
+            }
+        } else {
+            if ($npm.utils.isNull(v)) {
+                delete PQ.values;
+            } else {
+                PQ.values = [v];
+            }
+        }
+    }
+
+    setValues(values);
+
+    /**
+     * @name ParameterizedQuery#text
+     * @type {string|QueryFile}
+     * @description
+     * A non-empty query string or a {@link QueryFile} object.
+     */
+    Object.defineProperty(this, &#x27;text&#x27;, {
+        get: () =&#x3e; state.text,
+        set: value =&#x3e; {
+            if (value !== state.text) {
+                state.text = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#values
+     * @type {array}
+     * @description
+     * Query formatting parameters, depending on the type:
+     *
+     * - `null` / `undefined` means the query has no formatting parameters
+     * - `Array` - it is an array of formatting parameters
+     * - None of the above, means it is a single formatting value, which
+     *   is then automatically wrapped into an array
+     */
+    Object.defineProperty(this, &#x27;values&#x27;, {
+        get: () =&#x3e; PQ.values,
+        set: value =&#x3e; {
+            setValues(value);
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#binary
+     * @type {boolean}
+     * @default undefined
+     * @description
+     * Activates binary result mode. The default is the text mode.
+     *
+     * @see {@link http://www.postgresql.org/docs/devel/static/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY Extended Query}
+     */
+    Object.defineProperty(this, &#x27;binary&#x27;, {
+        get: () =&#x3e; state.binary,
+        set: value =&#x3e; {
+            if (value !== state.binary) {
+                state.binary = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#rowMode
+     * @type {string}
+     * @default undefined
+     * @description
+     * Changes the way data arrives to the client, with only one value supported by $[pg]:
+     *  - `rowMode = &#x27;array&#x27;` will make all data rows arrive as arrays of values.
+     *    By default, rows arrive as objects.
+     */
+    Object.defineProperty(this, &#x27;rowMode&#x27;, {
+        get: () =&#x3e; state.rowMode,
+        set: value =&#x3e; {
+            if (value !== state.rowMode) {
+                state.rowMode = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name ParameterizedQuery#error
+     * @type {errors.ParameterizedQueryError}
+     * @default undefined
+     * @readonly
+     * @description
+     * When in an error state, it is set to a {@link errors.ParameterizedQueryError ParameterizedQueryError} object. Otherwise,
+it is `undefined`.
+     *
+     * This property is primarily for internal use by the library.
+     */
+    Object.defineProperty(this, &#x27;error&#x27;, {
+        get: () =&#x3e; currentError
+    });
+
+    if ($npm.utils.isObject(text, [&#x27;text&#x27;])) {
+        state.text = text.text;
+        state.binary = text.binary;
+        state.rowMode = text.rowMode;
+        setValues(text.values);
+    }
+
+    /**
+     * @method ParameterizedQuery.parse
+     * @description
+     * Parses the current object and returns a simple `{text, values}`, if successful,
+     * or else it returns a {@link errors.ParameterizedQueryError ParameterizedQueryError} object.
+     *
+     * This method is primarily for internal use by the library.
+     *
+     * @returns {{text, values}|errors.ParameterizedQueryError}
+     */
+    this.parse = () =&#x3e; {
+
+        var qf = state.text instanceof $npm.QueryFile ? s ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.ParameterizedQuery.prototype" id="apidoc.module.pg-promise.ParameterizedQuery.prototype">module pg-promise.ParameterizedQuery.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.ParameterizedQuery.prototype.toString" id="apidoc.element.pg-promise.ParameterizedQuery.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.ParameterizedQuery.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap = $npm.utils.messageGap(level + 1);
+    var pq = this.parse();
+    var lines = [
+        &#x27;ParameterizedQuery {&#x27;
+    ];
+    if ($npm.utils.isText(pq.text)) {
+        lines.push(gap + &#x27;text: &#x22;&#x27; + pq.text + &#x27;&#x22;&#x27;);
+    }
+    if (this.values !== undefined) {
+        lines.push(gap + &#x27;values: &#x27; + JSON.stringify(this.values));
+    }
+    if (this.binary !== undefined) {
+        lines.push(gap + &#x27;binary: &#x27; + JSON.stringify(this.binary));
+    }
+    if (this.rowMode !== undefined) {
+        lines.push(gap + &#x27;rowMode: &#x27; + JSON.stringify(this.rowMode));
+    }
+    if (this.error !== undefined) {
+        lines.push(gap + &#x27;error: &#x27; + this.error.toString(level + 1));
+    }
+    lines.push($npm.utils.messageGap(level) + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.PreparedStatement" id="apidoc.module.pg-promise.PreparedStatement">module pg-promise.PreparedStatement</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.PreparedStatement.PreparedStatement" id="apidoc.element.pg-promise.PreparedStatement.PreparedStatement">
+        function <span class="apidocSignatureSpan">pg-promise.</span>PreparedStatement
+        <span class="apidocSignatureSpan">(name, text, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PreparedStatement(name, text, values) {
+    if (!(this instanceof PreparedStatement)) {
+        return new PreparedStatement(name, text, values);
+    }
+
+    var currentError, PS = {}, changed = true, state = {
+        name: name,
+        text: text,
+        binary: undefined,
+        rowMode: undefined,
+        rows: undefined
+    };
+
+    function setValues(v) {
+        if (Array.isArray(v)) {
+            if (v.length) {
+                PS.values = v;
+            } else {
+                delete PS.values;
+            }
+        } else {
+            if ($npm.utils.isNull(v)) {
+                delete PS.values;
+            } else {
+                PS.values = [v];
+            }
+        }
+    }
+
+    setValues(values);
+
+    /**
+     * @name PreparedStatement#name
+     * @type {string}
+     * @description
+     * An arbitrary name given to this particular prepared statement. It must be unique within a single session and is
+     * subsequently used to execute or deallocate a previously prepared statement.
+     */
+    Object.defineProperty(this, &#x27;name&#x27;, {
+        get: () =&#x3e; state.name,
+        set: value =&#x3e; {
+            if (value !== state.name) {
+                state.name = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#text
+     * @type {string|QueryFile}
+     * @description
+     * A non-empty query string or a {@link QueryFile} object.
+     *
+     * Changing this property for the same {@link PreparedStatement#name name} will have no effect, because queries
+     * for Prepared Statements are cached, with {@link PreparedStatement#name name} being the cache key.
+     */
+    Object.defineProperty(this, &#x27;text&#x27;, {
+        get: () =&#x3e; state.text,
+        set: value =&#x3e; {
+            if (value !== state.text) {
+                state.text = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#values
+     * @type {array}
+     * @description
+     * Query formatting parameters, depending on the type:
+     *
+     * - `null` / `undefined` means the query has no formatting parameters
+     * - `Array` - it is an array of formatting parameters
+     * - None of the above, means it is a single formatting value, which
+     *   is then automatically wrapped into an array
+     */
+    Object.defineProperty(this, &#x27;values&#x27;, {
+        get: () =&#x3e; PS.values,
+        set: value =&#x3e; {
+            setValues(value);
+        }
+    });
+
+    /**
+     * @name PreparedStatement#binary
+     * @type {boolean}
+     * @default undefined
+     * @description
+     * Activates binary result mode. The default is the text mode.
+     *
+     * @see {@link http://www.postgresql.org/docs/devel/static/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY Extended Query}
+     */
+    Object.defineProperty(this, &#x27;binary&#x27;, {
+        get: () =&#x3e; state.binary,
+        set: value =&#x3e; {
+            if (value !== state.binary) {
+                state.binary = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#rowMode
+     * @type {string}
+     * @default undefined
+     * @description
+     * Changes the way data arrives to the client, with only one value supported by $[pg]:
+     *  - `rowMode = &#x27;array&#x27;` will make all data rows arrive as arrays of values.
+     *    By default, rows arrive as objects.
+     */
+    Object.defineProperty(this, &#x27;rowMode&#x27;, {
+        get: () =&#x3e; state.rowMode,
+        set: value =&#x3e; {
+            if (value !== state.rowMode) {
+                state.rowMode = value;
+                changed = true;
+            }
+        }
+    });
+
+    /**
+     * @name PreparedStatement#rows
+     * @type {number}
+     * @description
+     * Number of rows to return at a time from a Prepared Statement&#x27;s portal.
+     * The default is 0, which means that all rows must be returned at once.
+     */
+    Object.defineProperty(this, &#x27;rows&#x27;, {
+        get: () =&#x3e; state.rows,
+        set: val ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.PreparedStatement.prototype" id="apidoc.module.pg-promise.PreparedStatement.prototype">module pg-promise.PreparedStatement.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.PreparedStatement.prototype.toString" id="apidoc.element.pg-promise.PreparedStatement.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.PreparedStatement.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap = $npm.utils.messageGap(level + 1);
+    var ps = this.parse();
+    var lines = [
+        &#x27;PreparedStatement {&#x27;,
+        gap + &#x27;name: &#x27; + JSON.stringify(this.name)
+    ];
+    if ($npm.utils.isText(ps.text)) {
+        lines.push(gap + &#x27;text: &#x22;&#x27; + ps.text + &#x27;&#x22;&#x27;);
+    }
+    if (this.values !== undefined) {
+        lines.push(gap + &#x27;values: &#x27; + JSON.stringify(this.values));
+    }
+    if (this.binary !== undefined) {
+        lines.push(gap + &#x27;binary: &#x27; + JSON.stringify(this.binary));
+    }
+    if (this.rowMode !== undefined) {
+        lines.push(gap + &#x27;rowMode: &#x27; + JSON.stringify(this.rowMode));
+    }
+    if (this.rows !== undefined) {
+        lines.push(gap + &#x27;rows: &#x27; + JSON.stringify(this.rows));
+    }
+    if (this.error) {
+        lines.push(gap + &#x27;error: &#x27; + this.error.toString(level + 1));
+    }
+    lines.push($npm.utils.messageGap(level) + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.QueryFile" id="apidoc.module.pg-promise.QueryFile">module pg-promise.QueryFile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.QueryFile.QueryFile" id="apidoc.element.pg-promise.QueryFile.QueryFile">
+        function <span class="apidocSignatureSpan">pg-promise.</span>QueryFile
+        <span class="apidocSignatureSpan">(file, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryFile(file, options) {
+
+    if (!(this instanceof QueryFile)) {
+        return new QueryFile(file, options);
+    }
+
+    var sql, error, ready, modTime, after, filePath = file, opt = {
+        debug: $npm.utils.isDev(),
+        minify: false,
+        compress: false
+    };
+
+    if (options &#x26;&#x26; typeof options === &#x27;object&#x27;) {
+        if (options.debug !== undefined) {
+            opt.debug = !!options.debug;
+        }
+        if (options.minify !== undefined) {
+            after = options.minify === &#x27;after&#x27;;
+            opt.minify = after ? &#x27;after&#x27; : !!options.minify;
+        }
+        if (options.compress !== undefined) {
+            opt.compress = !!options.compress;
+        }
+        if (opt.compress &#x26;&#x26; options.minify === undefined) {
+            opt.minify = true;
+        }
+        if (options.params !== undefined) {
+            opt.params = options.params;
+        }
+    }
+
+    Object.freeze(opt);
+
+    if ($npm.utils.isText(filePath) &#x26;&#x26; !$npm.utils.isPathAbsolute(filePath)) {
+        filePath = $npm.path.join($npm.utils.startDir, filePath);
+    }
+
+    // Custom Type Formatting support:
+    this.formatDBType = function () {
+        this.prepare(true);
+        return this.query;
+    };
+
+    /**
+     * @method QueryFile.prepare
+     * @summary Prepares the query for execution.
+     * @description
+     * If the the query hasn&#x27;t been prepared yet, it will read the file and process the contents according
+     * to the parameters passed into the constructor.
+     *
+     * This method is primarily for internal use by the library.
+     *
+     * @param {boolean} [throwErrors=false]
+     * Throw any error encountered.
+     *
+     */
+    this.prepare = function (throwErrors) {
+        var lastMod;
+        if (opt.debug &#x26;&#x26; ready) {
+            try {
+                lastMod = $npm.fs.statSync(filePath).mtime.getTime();
+                if (lastMod === modTime) {
+                    // istanbul ignore next;
+                    // coverage for this works differently under Windows and Linux
+                    return;
+                }
+                ready = false;
+            } catch (e) {
+                sql = undefined;
+                ready = false;
+                error = e;
+                if (throwErrors) {
+                    throw error;
+                }
+                return;
+            }
+        }
+        if (ready) {
+            return;
+        }
+        try {
+            sql = $npm.fs.readFileSync(filePath, &#x27;utf8&#x27;);
+            modTime = lastMod || $npm.fs.statSync(filePath).mtime.getTime();
+            if (opt.minify &#x26;&#x26; !after) {
+                sql = $npm.minify(sql, {compress: opt.compress});
+            }
+            if (opt.params !== undefined) {
+                sql = $npm.format(sql, opt.params, {partial: true});
+            }
+            if (opt.minify &#x26;&#x26; after) {
+                sql = $npm.minify(sql, {compress: opt.compress});
+            }
+            ready = true;
+            error = undefined;
+        } catch (e) {
+            sql = undefined;
+            error = new $npm.QueryFileError(e, this);
+            if (throwErrors) {
+                throw error;
+            }
+        }
+    };
+
+    /**
+     * @name QueryFile#query
+     * @type {string}
+     * @default undefined
+     * @readonly
+     * @summary Prepared query string.
+     * @description
+     * When property {@link QueryFile#error error} is set, the query is `undefined`.
+     *
+     * This property is primarily for internal use by the library.
+     */
+    Object.defineProperty(this, &#x27;query&#x27;, {
+        get: () =&#x3e; sql
+    });
+
+    /**
+     * @name QueryFile#error
+     * @type {errors.QueryFileError}
+     * @default undefined
+     * @readonly
+     * @description
+     * When in an error state, it is set to a {@link errors.QueryFileError QueryFileError} object. Otherwise, it is `undefined`.
+     *
+     * This property is primarily for internal use by the library.
+     */
+    Object.defineProperty(this, &#x27;error&#x27;, { ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Example:
+
+```js
+// Helper for linking to external query files:
+function sql(file) {
+// consider using here: path.join(__dirname, file)
+return new pgp.<span class="apidocCodeKeywordSpan">QueryFile</span>(file, {minify: true});
+}
+
+// Create QueryFile globally, once per file:
+var sqlFindUser = sql(&#x27;./sql/findUser.sql&#x27;);
+
+db.one(sqlFindUser, {id: 123})
+.then(user=&#x3e; {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.QueryFile.prototype" id="apidoc.module.pg-promise.QueryFile.prototype">module pg-promise.QueryFile.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.QueryFile.prototype.inspect" id="apidoc.element.pg-promise.QueryFile.prototype.inspect">
+        function <span class="apidocSignatureSpan">pg-promise.QueryFile.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function () {
+    return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.QueryFile.prototype.toString" id="apidoc.element.pg-promise.QueryFile.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.QueryFile.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap = $npm.utils.messageGap(level + 1);
+    var lines = [
+        &#x27;QueryFile {&#x27;
+    ];
+    this.prepare();
+    lines.push(gap + &#x27;file: &#x22;&#x27; + this.file + &#x27;&#x22;&#x27;);
+    lines.push(gap + &#x27;options: &#x27; + JSON.stringify(this.options));
+    if (this.error) {
+        lines.push(gap + &#x27;error: &#x27; + this.error.toString(level + 1));
+    } else {
+        lines.push(gap + &#x27;query: &#x22;&#x27; + this.query + &#x27;&#x22;&#x27;);
+    }
+    lines.push($npm.utils.messageGap(level) + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.array" id="apidoc.module.pg-promise.array">module pg-promise.array</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.array.countIf" id="apidoc.element.pg-promise.array.countIf">
+        function <span class="apidocSignatureSpan">pg-promise.array.</span>countIf
+        <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function countIf(arr, cb, obj) {
+    var count = 0;
+    if (obj) {
+        for (var i = 0; i &#x3c; arr.length; i++) {
+            count += cb.call(obj, arr[i], i, arr) ? 1 : 0;
+        }
+    } else {
+        for (var k = 0; k &#x3c; arr.length; k++) {
+            count += cb(arr[k], k, arr) ? 1 : 0;
+        }
+    }
+    return count;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.array.filter" id="apidoc.element.pg-promise.array.filter">
+        function <span class="apidocSignatureSpan">pg-promise.array.</span>filter
+        <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function filter(arr, cb, obj) {
+    var res = [];
+    if (obj) {
+        for (var i = 0; i &#x3c; arr.length; i++) {
+            if (cb.call(obj, arr[i], i, arr)) {
+                res.push(arr[i]);
+            }
+        }
+    } else {
+        for (var k = 0; k &#x3c; arr.length; k++) {
+            if (cb(arr[k], k, arr)) {
+                res.push(arr[k]);
+            }
+        }
+    }
+    return res;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.array.forEach" id="apidoc.element.pg-promise.array.forEach">
+        function <span class="apidocSignatureSpan">pg-promise.array.</span>forEach
+        <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function forEach(arr, cb, obj) {
+    if (obj) {
+        for (var i = 0; i &#x3c; arr.length; i++) {
+            cb.call(obj, arr[i], i, arr);
+        }
+    } else {
+        for (var k = 0; k &#x3c; arr.length; k++) {
+            cb(arr[k], k, arr);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* Executes a provided function once per array element, for an array of rows resolved by method {@link Database.any any}.
+*
+* It is a convenience method to reduce the following code:
+*
+* ```js
+* db.any(query, values)
+*     .then(data =&#x3e; {
+*         data.<span class="apidocCodeKeywordSpan">forEach</span>((row, index, data) =&#x3e; {
+*              // process the row
+*         });
+*         return data;
+*     });
+* ```
+*
+* In addition to much shorter code, it offers the following benefits:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.array.map" id="apidoc.element.pg-promise.array.map">
+        function <span class="apidocSignatureSpan">pg-promise.array.</span>map
+        <span class="apidocSignatureSpan">(arr, cb, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function map(arr, cb, obj) {
+    var res = new Array(arr.length);
+    if (obj) {
+        for (var i = 0; i &#x3c; arr.length; i++) {
+            res[i] = cb.call(obj, arr[i], i, arr);
+        }
+    } else {
+        for (var k = 0; k &#x3c; arr.length; k++) {
+            res[k] = cb(arr[k], k, arr);
+        }
+    }
+    return res;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+query(&#x27;INSERT INTO $1~($2~) VALUES(...)&#x27;, [&#x27;Table Name&#x27;, &#x27;Column Name&#x27;]);
+//=&#x3e; INSERT INTO &#x22;Table Name&#x22;(&#x22;Column Name&#x22;) VALUES(...)
+
+// A mixed example for a dynamic column list:
+var columns = [&#x27;id&#x27;, &#x27;message&#x27;];
+query(&#x27;SELECT ${columns^} FROM ${table~}&#x27;, {
+    columns: columns.<span class="apidocCodeKeywordSpan">map</span>(pgp.as.name).join(),
+    table: &#x27;Table Name&#x27;
+});
+//=&#x3e; SELECT &#x22;id&#x22;,&#x22;message&#x22; FROM &#x22;Table Name&#x22;
+```
+
+Version 5.2.1 and later supports extended syntax for `${this~}` and for method [as.name]:
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.as" id="apidoc.module.pg-promise.as">module pg-promise.as</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.array" id="apidoc.element.pg-promise.as.array">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>array
+        <span class="apidocSignatureSpan">(arr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">arr =&#x3e; {
+    arr = resolveFunc(arr);
+    if (isNull(arr)) {
+        return &#x27;null&#x27;;
+    }
+    if (arr instanceof Array) {
+        return formatArray(arr);
+    }
+    throw new TypeError(wrapText(arr) + &#x27; is not an Array object.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+   - format `$1` (single variable), if `values` is of type `string`, `boolean`, `number`, `Date`, `function`, `null` or [QueryFile
+];
+   - format `$1, $2, etc..`, if `values` is an array;
+   - format `$*propName*`, if `values` is an object (not `null` and not `Date`), where `*` is any of the supported open-close pairs
+: `{}`, `()`, `&#x3c;&#x3e;`, `[]`, `//`;
+* `values` (optional) - value/array/object to replace the variables in the query;
+* `qrm` - (optional) *Query Result Mask*, as explained below. When not passed, it defaults to `pgp.queryResult.any`.
+
+When a value/property inside array/object is an array, it is treated as a [PostgreSQL Array Type](http://www.postgresql.org/docs
+/9.4/static/arrays.html),
+converted into the array constructor format of `array[]`, the same as calling method `pgp.as.<span class="apidocCodeKeywordSpan">
+array</span>()`.
+
+When a value/property inside array/object is of type `object` (except for `null`, `Date` or `Buffer`), it is automatically
+serialized into JSON, the same as calling method `pgp.as.json()`, except the latter would convert anything to JSON.
+
+For the latest SQL formatting support see the API: methods [query] and [as.format].
+
+### SQL Names
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.bool" id="apidoc.element.pg-promise.as.bool">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>bool
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">value =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+        return &#x27;null&#x27;;
+    }
+    return value ? &#x27;true&#x27; : &#x27;false&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return &#x27;null&#x27;;
+}
+
+switch (typeof value) {
+    case &#x27;string&#x27;:
+        return $as.text(value, isRaw);
+    case &#x27;boolean&#x27;:
+        return $as.<span class="apidocCodeKeywordSpan">bool</span>(value);
+    case &#x27;number&#x27;:
+        return $as.number(value);
+    default:
+        if (value instanceof Date) {
+            return $as.date(value, isRaw);
+        }
+        if (value instanceof Array) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.buffer" id="apidoc.element.pg-promise.as.buffer">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>buffer
+        <span class="apidocSignatureSpan">(obj, raw)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(obj, raw) =&#x3e; {
+    obj = resolveFunc(obj);
+    if (isNull(obj)) {
+        throwIfRaw(raw);
+        return &#x27;null&#x27;;
+    }
+    if (obj instanceof Buffer) {
+        var s = &#x27;\\x&#x27; + obj.toString(&#x27;hex&#x27;);
+        return raw ? s : wrapText(s);
+    }
+    throw new TypeError(wrapText(obj) + &#x27; is not a Buffer object.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            if (value instanceof Date) {
+                return $as.date(value, isRaw);
+            }
+            if (value instanceof Array) {
+                return $as.array(value);
+            }
+            if (value instanceof Buffer) {
+                return $as.<span class="apidocCodeKeywordSpan">buffer</span>(value, isRaw);
+            }
+            return $as.json(value, isRaw);
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Converts array of values into PostgreSQL Array Constructor: array[...],
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.csv" id="apidoc.element.pg-promise.as.csv">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>csv
+        <span class="apidocSignatureSpan">(resolveFunc(values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">values =&#x3e; formatCSV(resolveFunc(values))</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+switch (fm) {
+    case fmFlags.name:
+        return $as.name(value);
+    case fmFlags.json:
+        return $as.json(value, isRaw);
+    case fmFlags.csv:
+        return $as.<span class="apidocCodeKeywordSpan">csv</span>(value);
+    case fmFlags.value:
+        return $as.value(value);
+    default:
+        break;
+}
+
+if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.date" id="apidoc.element.pg-promise.as.date">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>date
+        <span class="apidocSignatureSpan">(d, raw)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(d, raw) =&#x3e; {
+    d = resolveFunc(d);
+    if (isNull(d)) {
+        throwIfRaw(raw);
+        return &#x27;null&#x27;;
+    }
+    if (d instanceof Date) {
+        var s = $pgUtils.prepareValue(d);
+        return raw ? s : wrapText(s);
+    }
+    throw new TypeError(wrapText(d) + &#x27; is not a Date object.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return $as.text(value, isRaw);
+case &#x27;boolean&#x27;:
+    return $as.bool(value);
+case &#x27;number&#x27;:
+    return $as.number(value);
+default:
+    if (value instanceof Date) {
+        return $as.<span class="apidocCodeKeywordSpan">date</span>(value, isRaw);
+    }
+    if (value instanceof Array) {
+        return $as.array(value);
+    }
+    if (value instanceof Buffer) {
+        return $as.buffer(value, isRaw);
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.format" id="apidoc.element.pg-promise.as.format">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>format
+        <span class="apidocSignatureSpan">(query, values, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(query, values, options) =&#x3e; {
+    if (query &#x26;&#x26; typeof query.formatDBType === &#x27;function&#x27;) {
+        query = query.formatDBType();
+    }
+    return $formatQuery(query, values, false, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* @param {external:Stream} stream
+* Stream object to initialize streaming.
+*
+* @example
+* var QueryStream = require(&#x27;pg-query-stream&#x27;);
+* var JSONStream = require(&#x27;JSONStream&#x27;);
+*
+* // you can also use pgp.as.<span class="apidocCodeKeywordSpan">format</span>(query, values, options)
+* // to format queries properly, via pg-promise;
+* var qs = new QueryStream(&#x27;select * from users&#x27;);
+*
+* db.stream(qs, stream =&#x3e; {
+*         // initiate streaming into the console:
+*         stream.pipe(JSONStream.stringify()).pipe(process.stdout);
+*     })
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.func" id="apidoc.element.pg-promise.as.func">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>func
+        <span class="apidocSignatureSpan">(func, raw, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(func, raw, obj) =&#x3e; {
+    if (isNull(func)) {
+        throwIfRaw(raw);
+        return &#x27;null&#x27;;
+    }
+    if (typeof func !== &#x27;function&#x27;) {
+        throw new TypeError(wrapText(func) + &#x27; is not a function.&#x27;);
+    }
+    var fm = raw ? fmFlags.raw : null;
+    if (isNull(obj)) {
+        return formatValue(resolveFunc(func), fm);
+    }
+    if (typeof obj === &#x27;object&#x27;) {
+        return formatValue(resolveFunc(func, obj), fm, obj);
+    }
+    throw new TypeError(wrapText(obj) + &#x27; is not an object.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+In PostgreSQL stored procedures are just functions that usually do not return anything.
+
+Suppose we want to call function **findAudit** to find audit records by `user_id` and maximum timestamp.
+We can make such call as shown below:
+
+```js
+db.<span class="apidocCodeKeywordSpan">func</span>(&#x27;findAudit&#x27;, [123, new Date()])
+    .then(data =&#x3e; {
+        console.log(data); // printing the data returned
+    })
+    .catch(error =&#x3e; {
+        console.log(error); // printing the error
+    });
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.json" id="apidoc.element.pg-promise.as.json">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>json
+        <span class="apidocSignatureSpan">(obj, raw)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(obj, raw) =&#x3e; {
+    obj = resolveFunc(obj);
+    if (isNull(obj)) {
+        throwIfRaw(raw);
+        return &#x27;null&#x27;;
+    }
+    var s = JSON.stringify(obj);
+    return raw ? s : wrapText(safeText(s));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* `values` (optional) - value/array/object to replace the variables in the query;
+* `qrm` - (optional) *Query Result Mask*, as explained below. When not passed, it defaults to `pgp.queryResult.any`.
+
+When a value/property inside array/object is an array, it is treated as a [PostgreSQL Array Type](http://www.postgresql.org/docs
+/9.4/static/arrays.html),
+converted into the array constructor format of `array[]`, the same as calling method `pgp.as.array()`.
+
+When a value/property inside array/object is of type `object` (except for `null`, `Date` or `Buffer`), it is automatically
+serialized into JSON, the same as calling method `pgp.as.<span class="apidocCodeKeywordSpan">json</span>()`, except the latter would
+ convert anything to JSON.
+
+For the latest SQL formatting support see the API: methods [query] and [as.format].
+
+### SQL Names
+
+When a variable ends with `~` (tilde) or `:name`, it represents an SQL name or identifier, which must be a text
+string of at least 1 character long. Such name is then properly escaped and wrapped in double quotes.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.name" id="apidoc.element.pg-promise.as.name">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>name
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">name =&#x3e; {
+    name = resolveFunc(name);
+    if (name) {
+        if (typeof name === &#x27;string&#x27;) {
+            return /^\s*\*(\s*)$/.test(name) ? name : formatName(name);
+        }
+        if (typeof name === &#x27;object&#x27;) {
+            var keys = Array.isArray(name) ? name : Object.keys(name);
+            if (!keys.length) {
+                throw new Error(&#x27;Cannot retrieve sql names from an empty array/object.&#x27;);
+            }
+            return $arr.map(keys, value =&#x3e; {
+                if (!value || typeof value !== &#x27;string&#x27;) {
+                    throw new Error(&#x27;Invalid sql name: &#x27; + JSON.stringify(value));
+                }
+                return formatName(value);
+            }).join();
+        }
+    }
+
+    throw new TypeError(&#x27;Invalid sql name: &#x27; + JSON.stringify(name));
+
+    function formatName(name) {
+        return &#x27;&#x22;&#x27; + name.replace(/&#x22;/g, &#x27;&#x22;&#x22;&#x27;) + &#x27;&#x22;&#x27;;
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+var isRaw = !!(fm &#x26; fmFlags.raw);
+fm &#x26;= ~fmFlags.raw;
+
+switch (fm) {
+    case fmFlags.name:
+        return $as.<span class="apidocCodeKeywordSpan">name</span>(value);
+    case fmFlags.json:
+        return $as.json(value, isRaw);
+    case fmFlags.csv:
+        return $as.csv(value);
+    case fmFlags.value:
+        return $as.value(value);
+    default:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.number" id="apidoc.element.pg-promise.as.number">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>number
+        <span class="apidocSignatureSpan">(num)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">num =&#x3e; {
+    num = resolveFunc(num);
+    if (isNull(num)) {
+        return &#x27;null&#x27;;
+    }
+    if (typeof num !== &#x27;number&#x27;) {
+        throw new TypeError(wrapText(num) + &#x27; is not a number.&#x27;);
+    }
+    if (isFinite(num)) {
+        return num.toString();
+    }
+    // Converting NaN/+Infinity/-Infinity according to Postgres documentation:
+    // http://www.postgresql.org/docs/9.4/static/datatype-numeric.html#DATATYPE-FLOAT
+    //
+    // NOTE: strings for &#x27;NaN&#x27;/&#x27;+Infinity&#x27;/&#x27;-Infinity&#x27; are not case-sensitive.
+    if (num === Number.POSITIVE_INFINITY) {
+        return wrapText(&#x27;+Infinity&#x27;);
+    }
+    if (num === Number.NEGATIVE_INFINITY) {
+        return wrapText(&#x27;-Infinity&#x27;);
+    }
+    return wrapText(&#x27;NaN&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    switch (typeof value) {
+case &#x27;string&#x27;:
+    return $as.text(value, isRaw);
+case &#x27;boolean&#x27;:
+    return $as.bool(value);
+case &#x27;number&#x27;:
+    return $as.<span class="apidocCodeKeywordSpan">number</span>(value);
+default:
+    if (value instanceof Date) {
+        return $as.date(value, isRaw);
+    }
+    if (value instanceof Array) {
+        return $as.array(value);
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.text" id="apidoc.element.pg-promise.as.text">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>text
+        <span class="apidocSignatureSpan">(value, raw)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+        throwIfRaw(raw);
+        return &#x27;null&#x27;;
+    }
+    if (typeof value !== &#x27;string&#x27;) {
+        value = value.toString();
+    }
+    return raw ? value : wrapText(safeText(value));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (isNull(value)) {
+    throwIfRaw(isRaw);
+    return &#x27;null&#x27;;
+}
+
+switch (typeof value) {
+    case &#x27;string&#x27;:
+        return $as.<span class="apidocCodeKeywordSpan">text</span>(value, isRaw);
+    case &#x27;boolean&#x27;:
+        return $as.bool(value);
+    case &#x27;number&#x27;:
+        return $as.number(value);
+    default:
+        if (value instanceof Date) {
+            return $as.date(value, isRaw);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.as.value" id="apidoc.element.pg-promise.as.value">
+        function <span class="apidocSignatureSpan">pg-promise.as.</span>value
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">value =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+        throw new TypeError(&#x27;Open values cannot be null or undefined.&#x27;);
+    }
+    return safeText(formatValue(value, fmFlags.raw));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    case fmFlags.name:
+        return $as.name(value);
+    case fmFlags.json:
+        return $as.json(value, isRaw);
+    case fmFlags.csv:
+        return $as.csv(value);
+    case fmFlags.value:
+        return $as.<span class="apidocCodeKeywordSpan">value</span>(value);
+    default:
+        break;
+}
+
+if (isNull(value)) {
+    throwIfRaw(isRaw);
+    return &#x27;null&#x27;;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors" id="apidoc.module.pg-promise.errors">module pg-promise.errors</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.ParameterizedQueryError" id="apidoc.element.pg-promise.errors.ParameterizedQueryError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>ParameterizedQueryError
+        <span class="apidocSignatureSpan">(error, ps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParameterizedQueryError(error, ps) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;ParameterizedQueryError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.QueryFileError) {
+        this.error = error;
+        this.message = &#x27;Failed to initialize \&#x27;text\&#x27; from a QueryFile.&#x27;;
+    } else {
+        this.message = error;
+    }
+    this.result = ps;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.PreparedStatementError" id="apidoc.element.pg-promise.errors.PreparedStatementError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>PreparedStatementError
+        <span class="apidocSignatureSpan">(error, ps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PreparedStatementError(error, ps) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;PreparedStatementError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.QueryFileError) {
+        this.error = error;
+        this.message = &#x27;Failed to initialize \&#x27;text\&#x27; from a QueryFile.&#x27;;
+    } else {
+        this.message = error;
+    }
+    this.result = ps;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryFileError" id="apidoc.element.pg-promise.errors.QueryFileError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryFileError
+        <span class="apidocSignatureSpan">(error, qf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryFileError(error, qf) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;QueryFileError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.minify.SQLParsingError) {
+        this.error = error;
+        this.message = &#x27;Failed to parse the SQL.&#x27;;
+    } else {
+        this.message = error.message;
+    }
+    this.file = qf.file;
+    this.options = qf.options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryResultError" id="apidoc.element.pg-promise.errors.QueryResultError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryResultError
+        <span class="apidocSignatureSpan">(code, result, query, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryResultError(code, result, query, values) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;QueryResultError&#x27;;
+    this.stack = temp.stack;
+    this.message = errorMessages[code].message;
+    this.code = code;
+    this.result = result;
+    this.query = query;
+    this.values = values;
+    this.received = result.rows.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.ParameterizedQueryError" id="apidoc.module.pg-promise.errors.ParameterizedQueryError">module pg-promise.errors.ParameterizedQueryError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.ParameterizedQueryError.ParameterizedQueryError" id="apidoc.element.pg-promise.errors.ParameterizedQueryError.ParameterizedQueryError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>ParameterizedQueryError
+        <span class="apidocSignatureSpan">(error, ps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParameterizedQueryError(error, ps) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;ParameterizedQueryError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.QueryFileError) {
+        this.error = error;
+        this.message = &#x27;Failed to initialize \&#x27;text\&#x27; from a QueryFile.&#x27;;
+    } else {
+        this.message = error;
+    }
+    this.result = ps;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.ParameterizedQueryError.prototype" id="apidoc.module.pg-promise.errors.ParameterizedQueryError.prototype">module pg-promise.errors.ParameterizedQueryError.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.ParameterizedQueryError.prototype.inspect" id="apidoc.element.pg-promise.errors.ParameterizedQueryError.prototype.inspect">
+        function <span class="apidocSignatureSpan">pg-promise.errors.ParameterizedQueryError.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function () {
+    return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.ParameterizedQueryError.prototype.toString" id="apidoc.element.pg-promise.errors.ParameterizedQueryError.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.errors.ParameterizedQueryError.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap0 = $npm.utils.messageGap(level),
+        gap1 = $npm.utils.messageGap(level + 1),
+        gap2 = $npm.utils.messageGap(level + 2),
+        lines = [
+            &#x27;ParameterizedQueryError {&#x27;,
+            gap1 + &#x27;message: &#x22;&#x27; + this.message + &#x27;&#x22;&#x27;,
+            gap1 + &#x27;result: {&#x27;,
+            gap2 + &#x27;text: &#x27; + JSON.stringify(this.result.text),
+            gap2 + &#x27;values: &#x27; + JSON.stringify(this.result.values),
+            gap1 + &#x27;}&#x27;
+        ];
+    if (this.error) {
+        lines.push(gap1 + &#x27;error: &#x27; + this.error.toString(level + 1));
+    }
+    lines.push(gap0 + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.PreparedStatementError" id="apidoc.module.pg-promise.errors.PreparedStatementError">module pg-promise.errors.PreparedStatementError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.PreparedStatementError.PreparedStatementError" id="apidoc.element.pg-promise.errors.PreparedStatementError.PreparedStatementError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>PreparedStatementError
+        <span class="apidocSignatureSpan">(error, ps)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PreparedStatementError(error, ps) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;PreparedStatementError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.QueryFileError) {
+        this.error = error;
+        this.message = &#x27;Failed to initialize \&#x27;text\&#x27; from a QueryFile.&#x27;;
+    } else {
+        this.message = error;
+    }
+    this.result = ps;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.PreparedStatementError.prototype" id="apidoc.module.pg-promise.errors.PreparedStatementError.prototype">module pg-promise.errors.PreparedStatementError.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.PreparedStatementError.prototype.inspect" id="apidoc.element.pg-promise.errors.PreparedStatementError.prototype.inspect">
+        function <span class="apidocSignatureSpan">pg-promise.errors.PreparedStatementError.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function () {
+    return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.PreparedStatementError.prototype.toString" id="apidoc.element.pg-promise.errors.PreparedStatementError.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.errors.PreparedStatementError.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap0 = $npm.utils.messageGap(level),
+        gap1 = $npm.utils.messageGap(level + 1),
+        gap2 = $npm.utils.messageGap(level + 2),
+        lines = [
+            &#x27;PreparedStatementError {&#x27;,
+            gap1 + &#x27;message: &#x22;&#x27; + this.message + &#x27;&#x22;&#x27;,
+            gap1 + &#x27;result: {&#x27;,
+            gap2 + &#x27;name: &#x27; + JSON.stringify(this.result.name),
+            gap2 + &#x27;text: &#x27; + JSON.stringify(this.result.text),
+            gap2 + &#x27;values: &#x27; + JSON.stringify(this.result.values),
+            gap1 + &#x27;}&#x27;
+        ];
+    if (this.error) {
+        lines.push(gap1 + &#x27;error: &#x27; + this.error.toString(level + 1));
+    }
+    lines.push(gap0 + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.QueryFileError" id="apidoc.module.pg-promise.errors.QueryFileError">module pg-promise.errors.QueryFileError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryFileError.QueryFileError" id="apidoc.element.pg-promise.errors.QueryFileError.QueryFileError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryFileError
+        <span class="apidocSignatureSpan">(error, qf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryFileError(error, qf) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;QueryFileError&#x27;;
+    this.stack = temp.stack;
+    if (error instanceof $npm.minify.SQLParsingError) {
+        this.error = error;
+        this.message = &#x27;Failed to parse the SQL.&#x27;;
+    } else {
+        this.message = error.message;
+    }
+    this.file = qf.file;
+    this.options = qf.options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.QueryFileError.prototype" id="apidoc.module.pg-promise.errors.QueryFileError.prototype">module pg-promise.errors.QueryFileError.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryFileError.prototype.inspect" id="apidoc.element.pg-promise.errors.QueryFileError.prototype.inspect">
+        function <span class="apidocSignatureSpan">pg-promise.errors.QueryFileError.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function () {
+    return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryFileError.prototype.toString" id="apidoc.element.pg-promise.errors.QueryFileError.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.errors.QueryFileError.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap0 = $npm.utils.messageGap(level),
+        gap1 = $npm.utils.messageGap(level + 1),
+        lines = [
+            &#x27;QueryFileError {&#x27;,
+            gap1 + &#x27;message: &#x22;&#x27; + this.message + &#x27;&#x22;&#x27;,
+            gap1 + &#x27;options: &#x27; + JSON.stringify(this.options),
+            gap1 + &#x27;file: &#x22;&#x27; + this.file + &#x27;&#x22;&#x27;
+        ];
+    if (this.error) {
+        lines.push(gap1 + &#x27;error: &#x27; + this.error.toString(level + 1));
+    }
+    lines.push(gap0 + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.QueryResultError" id="apidoc.module.pg-promise.errors.QueryResultError">module pg-promise.errors.QueryResultError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryResultError.QueryResultError" id="apidoc.element.pg-promise.errors.QueryResultError.QueryResultError">
+        function <span class="apidocSignatureSpan">pg-promise.errors.</span>QueryResultError
+        <span class="apidocSignatureSpan">(code, result, query, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function QueryResultError(code, result, query, values) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;QueryResultError&#x27;;
+    this.stack = temp.stack;
+    this.message = errorMessages[code].message;
+    this.code = code;
+    this.result = result;
+    this.query = query;
+    this.values = values;
+    this.received = result.rows.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.errors.QueryResultError.prototype" id="apidoc.module.pg-promise.errors.QueryResultError.prototype">module pg-promise.errors.QueryResultError.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryResultError.prototype.inspect" id="apidoc.element.pg-promise.errors.QueryResultError.prototype.inspect">
+        function <span class="apidocSignatureSpan">pg-promise.errors.QueryResultError.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function () {
+    return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.errors.QueryResultError.prototype.toString" id="apidoc.element.pg-promise.errors.QueryResultError.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.errors.QueryResultError.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap0 = $npm.utils.messageGap(level),
+        gap1 = $npm.utils.messageGap(level + 1),
+        lines = [
+            &#x27;QueryResultError {&#x27;,
+            gap1 + &#x27;code: queryResultErrorCode.&#x27; + errorMessages[this.code].name,
+            gap1 + &#x27;message: &#x22;&#x27; + this.message + &#x27;&#x22;&#x27;,
+            gap1 + &#x27;received: &#x27; + this.received,
+            gap1 + &#x27;query: &#x27; + (typeof this.query === &#x27;string&#x27; ? &#x27;&#x22;&#x27; + this.query + &#x27;&#x22;&#x27; : JSON.stringify(this.query))
+        ];
+    if (this.values !== undefined) {
+        lines.push(gap1 + &#x27;values: &#x27; + JSON.stringify(this.values));
+    }
+    lines.push(gap0 + &#x27;}&#x27;);
+    return lines.join($npm.os.EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.events" id="apidoc.module.pg-promise.events">module pg-promise.events</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.connect" id="apidoc.element.pg-promise.events.connect">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>connect
+        <span class="apidocSignatureSpan">(ctx, client, isFresh)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(ctx, client, isFresh) =&#x3e; {
+    if (typeof ctx.options.connect === &#x27;function&#x27;) {
+        try {
+            ctx.options.connect(client, ctx.dc, isFresh);
+        } catch (e) {
+            // have to silence errors here;
+            // cannot allow unhandled errors while connecting to the database,
+            // as it will break the connection logic;
+            $events.unexpected(&#x27;connect&#x27;, e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+con: require(&#x27;manakin&#x27;).local,
+utils: require(&#x27;./utils&#x27;),
+events: require(&#x27;./events&#x27;)
+};
+
+function poolConnect(ctx, config) {
+return config.promise((resolve, reject) =&#x3e; {
+    config.pgp.pg.<span class="apidocCodeKeywordSpan">connect</span>(ctx.cn, (err, client, done) =&#x3e; {
+        if (err) {
+            $npm.events.error(ctx.options, err, {
+                cn: $npm.utils.getSafeConnection(ctx.cn),
+                dc: ctx.dc
+            });
+            reject(err);
+        } else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.disconnect" id="apidoc.element.pg-promise.events.disconnect">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>disconnect
+        <span class="apidocSignatureSpan">(ctx, client)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(ctx, client) =&#x3e; {
+    if (typeof ctx.options.disconnect === &#x27;function&#x27;) {
+        try {
+            ctx.options.disconnect(client, ctx.dc);
+        } catch (e) {
+            // have to silence errors here;
+            // cannot allow unhandled errors while disconnecting from the database,
+            // as it will break the disconnection logic;
+            $events.unexpected(&#x27;disconnect&#x27;, e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                var end = lockClientEnd(client);
+                resolve({
+                    isFresh: isFresh,
+                    client: client,
+                    done: () =&#x3e; {
+                        client.end = end;
+                        done();
+                        $npm.events.<span class="apidocCodeKeywordSpan">disconnect</span>(ctx, client);
+                    }
+                });
+                $npm.events.connect(ctx, client, isFresh);
+            }
+        });
+    });
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.error" id="apidoc.element.pg-promise.events.error">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>error
+        <span class="apidocSignatureSpan">(options, err, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(options, err, context) =&#x3e; {
+    if (typeof options.error === &#x27;function&#x27;) {
+        try {
+            options.error(err, context);
+        } catch (e) {
+            // have to silence errors here;
+            // throwing unhandled errors while handling an error
+            // notification is simply not acceptable.
+            $events.unexpected(&#x27;error&#x27;, e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+events: require(&#x27;./events&#x27;)
+};
+
+function poolConnect(ctx, config) {
+return config.promise((resolve, reject) =&#x3e; {
+    config.pgp.pg.connect(ctx.cn, (err, client, done) =&#x3e; {
+        if (err) {
+            $npm.events.<span class="apidocCodeKeywordSpan">error</span>(ctx.options, err, {
+                cn: $npm.utils.getSafeConnection(ctx.cn),
+                dc: ctx.dc
+            });
+            reject(err);
+        } else {
+            var isFresh = !client.$used;
+            if (isFresh) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.extend" id="apidoc.element.pg-promise.events.extend">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>extend
+        <span class="apidocSignatureSpan">(options, obj, dc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(options, obj, dc) =&#x3e; {
+    if (typeof options.extend === &#x27;function&#x27;) {
+        try {
+            options.extend.call(obj, obj, dc);
+        } catch (e) {
+            // have to silence errors here;
+            // the result of throwing unhandled errors while
+            // extending the protocol would be unpredictable.
+            $events.unexpected(&#x27;extend&#x27;, e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        }
+
+        // lock all default properties to read-only,
+        // to prevent override by the client.
+        $npm.utils.lock(obj, false, ctx.options);
+
+        // extend the protocol;
+        $npm.events.<span class="apidocCodeKeywordSpan">extend</span>(ctx.options, obj, ctx.dc);
+
+        // freeze the protocol permanently;
+        $npm.utils.lock(obj, true, ctx.options);
+    }
+
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.query" id="apidoc.element.pg-promise.events.query">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>query
+        <span class="apidocSignatureSpan">(options, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(options, context) =&#x3e; {
+    if (typeof options.query === &#x27;function&#x27;) {
+        try {
+            options.query(context);
+        } catch (e) {
+            // throwing an error during event &#x27;query&#x27;
+            // will result in a reject for the request.
+            return e instanceof Error ? e : new $npm.utils.InternalError(e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    any: 6
+};
+```
+
+In the following generic-query example we indicate that the call can return anything:
+
+```js
+db.<span class="apidocCodeKeywordSpan">query</span>(&#x27;select * from users&#x27;);
+```
+
+which is equivalent to making one of the following calls:
+
+```js
+var qrm = pgp.queryResult;
+db.query(&#x27;SELECT * FROM users&#x27;, undefined, qrm.many | qrm.none);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.receive" id="apidoc.element.pg-promise.events.receive">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>receive
+        <span class="apidocSignatureSpan">(options, data, result, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(options, data, result, context) =&#x3e; {
+    if (typeof options.receive === &#x27;function&#x27;) {
+        try {
+            options.receive(data, result, context);
+        } catch (e) {
+            // throwing an error during event &#x27;receive&#x27;
+            // will result in a reject for the request.
+            return e instanceof Error ? e : new $npm.utils.InternalError(e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *         }
+ *     }
+ * }
+ */
+receive: (options, data, result, context) =&#x3e; {
+    if (typeof options.receive === &#x27;function&#x27;) {
+        try {
+            options.<span class="apidocCodeKeywordSpan">receive</span>(data, result, context);
+        } catch (e) {
+            // throwing an error during event &#x27;receive&#x27;
+            // will result in a reject for the request.
+            return e instanceof Error ? e : new $npm.utils.InternalError(e);
+        }
+    }
+},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.task" id="apidoc.element.pg-promise.events.task">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>task
+        <span class="apidocSignatureSpan">(options, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(options, context) =&#x3e; {
+    if (typeof options.task === &#x27;function&#x27;) {
+        try {
+            options.task(context);
+        } catch (e) {
+            // silencing the error, to avoid breaking the task;
+            $events.unexpected(&#x27;task&#x27;, e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Tasks
+
+A task represents a shared connection to be used within a callback function. The callback can be either a regular function or an
+ ES6 generator.
+
+A transaction, for example, is just a special type of task, wrapped in `CONNECT-&#x3e;COMMIT/ROLLBACK`.
+
+```js
+db.<span class="apidocCodeKeywordSpan">task</span>(t =&#x3e; {
+// execute a chain of queries;
+})
+.then(data =&#x3e; {
+    // success;
+})
+.catch(error =&#x3e; {
+    // failed;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.transact" id="apidoc.element.pg-promise.events.transact">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>transact
+        <span class="apidocSignatureSpan">(options, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(options, context) =&#x3e; {
+    if (typeof options.transact === &#x27;function&#x27;) {
+        try {
+            options.transact(context);
+        } catch (e) {
+            // silencing the error, to avoid breaking the transaction;
+            $events.unexpected(&#x27;transact&#x27;, e);
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *     }
+ * };
+ *
+ */
+transact: (options, context) =&#x3e; {
+    if (typeof options.transact === &#x27;function&#x27;) {
+        try {
+            options.<span class="apidocCodeKeywordSpan">transact</span>(context);
+        } catch (e) {
+            // silencing the error, to avoid breaking the transaction;
+            $events.unexpected(&#x27;transact&#x27;, e);
+        }
+    }
+},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.events.unexpected" id="apidoc.element.pg-promise.events.unexpected">
+        function <span class="apidocSignatureSpan">pg-promise.events.</span>unexpected
+        <span class="apidocSignatureSpan">(event, e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(event, e) =&#x3e; {
+    // If you should ever get here, your app is definitely broken, and you need to fix
+    // your event handler to prevent unhandled errors during event notifications.
+    //
+    // Console output is suppressed when running tests, to avoid polluting test output
+    // with error messages that are intentional and of no value to the test.
+
+    /* istanbul ignore if */
+    if (!$npm.main.suppressErrors) {
+        var stack = e instanceof Error ? e.stack : new Error().stack;
+        $npm.con.error(&#x27;Unexpected error in \&#x27;%s\&#x27; event handler.\n%s\n&#x27;, event, stack);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (typeof ctx.options.connect === &#x27;function&#x27;) {
+        try {
+            ctx.options.connect(client, ctx.dc, isFresh);
+        } catch (e) {
+            // have to silence errors here;
+            // cannot allow unhandled errors while connecting to the database,
+            // as it will break the connection logic;
+            $events.<span class="apidocCodeKeywordSpan">unexpected</span>(&#x27;connect&#x27;, e);
+        }
+    }
+},
+
+/**
+ * @event disconnect
+ * @description
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.formatting" id="apidoc.module.pg-promise.formatting">module pg-promise.formatting</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.formatting.formatFunction" id="apidoc.element.pg-promise.formatting.formatFunction">
+        function <span class="apidocSignatureSpan">pg-promise.formatting.</span>formatFunction
+        <span class="apidocSignatureSpan">(funcName, values, capSQL)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function $formatFunction(funcName, values, capSQL) {
+    var sql = capSQL ? &#x27;SELECT * FROM &#x27; : &#x27;select * from &#x27;;
+    return sql + funcName + &#x27;(&#x27; + formatCSV(values) + &#x27;)&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+}
+
+if (!error &#x26;&#x26; (!pgFormatting || isFunc)) {
+    try {
+        // use &#x27;pg-promise&#x27; implementation of values formatting;
+        if (isFunc) {
+            query = $npm.formatting.<span class="apidocCodeKeywordSpan">formatFunction</span>(query, values, capSQL);
+        } else {
+            query = $npm.formatting.formatQuery(query, values);
+        }
+    } catch (e) {
+        if (isFunc) {
+            var prefix = capSQL ? &#x27;SELECT * FROM&#x27; : &#x27;select * from&#x27;;
+            query = prefix + &#x27; &#x27; + query + &#x27;(...)&#x27;;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.formatting.formatQuery" id="apidoc.element.pg-promise.formatting.formatQuery">
+        function <span class="apidocSignatureSpan">pg-promise.formatting.</span>formatQuery
+        <span class="apidocSignatureSpan">(query, values, raw, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function $formatQuery(query, values, raw, options) {
+    if (typeof query !== &#x27;string&#x27;) {
+        throw new TypeError(&#x27;Parameter \&#x27;query\&#x27; must be a text string.&#x27;);
+    }
+    if (values &#x26;&#x26; typeof values === &#x27;object&#x27;) {
+        var ctf = values[&#x27;formatDBType&#x27;]; // custom type formatting;
+        if (typeof ctf === &#x27;function&#x27;) {
+            return $formatQuery(query, resolveFunc(ctf, values), raw || values._rawDBType, options);
+        }
+        if (values instanceof Array) {
+            // $1, $2,... formatting to be applied;
+            return formatAs.array(query, values, raw, options);
+        }
+        if (!(values instanceof Date || values instanceof Buffer)) {
+            // $*propName* formatting to be applied;
+            return formatAs.object(query, values, raw, options);
+        }
+    }
+    // $1 formatting to be applied, if values != undefined;
+    return values === undefined ? query : formatAs.value(query, values, raw);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    if (!error &#x26;&#x26; (!pgFormatting || isFunc)) {
+try {
+    // use &#x27;pg-promise&#x27; implementation of values formatting;
+    if (isFunc) {
+        query = $npm.formatting.formatFunction(query, values, capSQL);
+    } else {
+        query = $npm.formatting.<span class="apidocCodeKeywordSpan">formatQuery</span>(query, values);
+    }
+} catch (e) {
+    if (isFunc) {
+        var prefix = capSQL ? &#x27;SELECT * FROM&#x27; : &#x27;select * from&#x27;;
+        query = prefix + &#x27; &#x27; + query + &#x27;(...)&#x27;;
+    }
+    error = e instanceof Error ? e : new $npm.utils.InternalError(e);
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.minify" id="apidoc.module.pg-promise.minify">module pg-promise.minify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify.minify" id="apidoc.element.pg-promise.minify.minify">
+        function <span class="apidocSignatureSpan">pg-promise.</span>minify
+        <span class="apidocSignatureSpan">(sql, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function minify(sql, options) {
+
+    if (typeof sql !== &#x27;string&#x27;) {
+        throw new TypeError(&#x22;Input SQL must be a text string.&#x22;);
+    }
+
+    if (options !== undefined &#x26;&#x26; typeof options !== &#x27;object&#x27;) {
+        throw new TypeError(&#x22;Parameter &#x27;options&#x27; must be an object.&#x22;);
+    }
+
+    if (!sql.length) {
+        return &#x27;&#x27;;
+    }
+
+    var idx = 0, // current index
+        result = &#x27;&#x27;, // resulting sql
+        len = sql.length, // sql length
+        EOL = getEOL(sql), // end-of-line
+        space = false, // add a space on the next step
+        compress = options &#x26;&#x26; options.compress; // option &#x27;compress&#x27;
+
+    do {
+        var s = sql[idx], // current symbol;
+            s1 = idx &#x3c; len - 1 ? sql[idx + 1] : &#x27;&#x27;; // next symbol;
+
+        if (isGap(s)) {
+            while (++idx &#x3c; len &#x26;&#x26; isGap(sql[idx]));
+            if (idx &#x3c; len) {
+                space = true;
+            }
+            idx--;
+            continue;
+        }
+
+        if (s === &#x27;-&#x27; &#x26;&#x26; s1 === &#x27;-&#x27;) {
+            var lb = sql.indexOf(EOL, idx + 2);
+            if (lb &#x3c; 0) {
+                break;
+            }
+            idx = lb - 1;
+            skipGaps();
+            continue;
+        }
+
+        if (s === &#x27;/&#x27; &#x26;&#x26; s1 === &#x27;*&#x27;) {
+            var end = sql.indexOf(&#x27;*/&#x27;, idx + 2);
+            if (end &#x3c; 0) {
+                throwError(PEC.unclosedMLC);
+            }
+            idx = end + 1;
+            skipGaps();
+            continue;
+        }
+
+        if (s === &#x27;&#x22;&#x27;) {
+            var closeIdx = sql.indexOf(&#x27;&#x22;&#x27;, idx + 1);
+            if (closeIdx &#x3c; 0) {
+                throwError(PEC.unclosedQI);
+            }
+            var text = sql.substr(idx, closeIdx - idx + 1);
+            if (text.indexOf(EOL) &#x3e; 0) {
+                throwError(PEC.multiLineQI);
+            }
+            if (compress) {
+                space = false;
+            }
+            addSpace();
+            result += text;
+            idx = closeIdx;
+            skipGaps();
+            continue;
+        }
+
+        if (s === &#x27;\&#x27;&#x27;) {
+            var closeIdx = idx;
+            do {
+                closeIdx = sql.indexOf(&#x27;\&#x27;&#x27;, closeIdx + 1);
+                if (closeIdx &#x3e; 0) {
+                    var step = closeIdx;
+                    while (++step &#x3c; len &#x26;&#x26; sql[step] === &#x27;\&#x27;&#x27;);
+                    if ((step - closeIdx) % 2) {
+                        closeIdx = step - 1;
+                        break;
+                    }
+                    closeIdx = step === len ? -1 : step;
+                }
+            } while (closeIdx &#x3e; 0);
+            if (closeIdx &#x3c; 0) {
+                throwError(PEC.unclosedText);
+            }
+            if (compress) {
+                space = false;
+            }
+            addSpace();
+            var text = sql.substr(idx, closeIdx - idx + 1);
+            var hasLB = text.indexOf(EOL) &#x3e; 0;
+            if (hasLB) {
+                text = text.split(EOL).map(function (m) {
+                    return m.replace(/^\s+|\s+$/g, &#x27;&#x27;);
+                }).join(&#x27;\\n&#x27;);
+            }
+            var hasTabs = text.indexOf(&#x27;\t&#x27;) &#x3e; 0;
+            if (hasLB || hasTabs) {
+                var prev = idx ? sql[idx - 1] : &#x27;&#x27;;
+                if (prev !== &#x27;E&#x27; &#x26;&#x26; prev !== &#x27;e&#x27;) {
+                    var r = result ? result[result.length - 1] : &#x27;&#x27;;
+                    if (r &#x26;&#x26; r !== &#x27; &#x27; &#x26;&#x26; compressors.indexOf(r) &#x3c; 0) {
+                        result += &#x27; &#x27;;
+                    }
+                    result += &#x27;E&#x27;;
+                }
+                if (hasTabs) {
+                    text = text.replace(/\t/g, &#x27;\\t&#x27;);
+                }
+            }
+            result += text;
+            idx = closeIdx;
+            skipGaps();
+            continue;
+        }
+
+        if (compress &#x26;&#x26; compressors.indexOf(s) &#x3e;= 0) {
+            space = false;
+            skipGaps();
+        }
+
+        addSpace();
+        result += s;
+
+    } while (++idx &#x3c; len);
+
+    return result;
+
+    function skipGaps() {
+        if (compress) {
+            while (idx &#x3c; len - 1 &#x26;&#x26; isGap(sql[id ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify.SQLParsingError" id="apidoc.element.pg-promise.minify.SQLParsingError">
+        function <span class="apidocSignatureSpan">pg-promise.minify.</span>SQLParsingError
+        <span class="apidocSignatureSpan">(code, position)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SQLParsingError(code, position) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;SQLParsingError&#x27;;
+    this.stack = temp.stack;
+    this.code = code; // one of parsingErrorCode values;
+    this.error = errorMessages[code].message;
+    this.position = position; // Error position in the text: {line, column}
+    this.message = &#x22;Error parsing SQL at {line:&#x22; + position.line + &#x22;,col:&#x22; + position.column + &#x22;}: &#x22; + this.error;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.minify.SQLParsingError" id="apidoc.module.pg-promise.minify.SQLParsingError">module pg-promise.minify.SQLParsingError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify.SQLParsingError.SQLParsingError" id="apidoc.element.pg-promise.minify.SQLParsingError.SQLParsingError">
+        function <span class="apidocSignatureSpan">pg-promise.minify.</span>SQLParsingError
+        <span class="apidocSignatureSpan">(code, position)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SQLParsingError(code, position) {
+    var temp = Error.apply(this, arguments);
+    temp.name = this.name = &#x27;SQLParsingError&#x27;;
+    this.stack = temp.stack;
+    this.code = code; // one of parsingErrorCode values;
+    this.error = errorMessages[code].message;
+    this.position = position; // Error position in the text: {line, column}
+    this.message = &#x22;Error parsing SQL at {line:&#x22; + position.line + &#x22;,col:&#x22; + position.column + &#x22;}: &#x22; + this.error;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.minify.SQLParsingError.prototype" id="apidoc.module.pg-promise.minify.SQLParsingError.prototype">module pg-promise.minify.SQLParsingError.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify.SQLParsingError.prototype.inspect" id="apidoc.element.pg-promise.minify.SQLParsingError.prototype.inspect">
+        function <span class="apidocSignatureSpan">pg-promise.minify.SQLParsingError.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">inspect = function () {
+    return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.minify.SQLParsingError.prototype.toString" id="apidoc.element.pg-promise.minify.SQLParsingError.prototype.toString">
+        function <span class="apidocSignatureSpan">pg-promise.minify.SQLParsingError.prototype.</span>toString
+        <span class="apidocSignatureSpan">(level)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function (level) {
+    level = level &#x3e; 0 ? parseInt(level) : 0;
+    var gap = messageGap(level + 1);
+    var lines = [
+        &#x27;SQLParsingError {&#x27;,
+        gap + &#x27;code: parsingErrorCode.&#x27; + errorMessages[this.code].name,
+        gap + &#x27;error: &#x22;&#x27; + this.error + &#x27;&#x22;&#x27;,
+        gap + &#x27;position: {line: &#x27; + this.position.line + &#x22;, col: &#x22; + this.position.column + &#x27;}&#x27;,
+        messageGap(level) + &#x27;}&#x27;
+    ];
+    return lines.join(EOL);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ *
+ * @param {boolean} [raw=false]
+ * Indicates when not to escape the resulting text.
+ *
+ * @returns {string}
+ *
+ * - `null` string, if the `value` resolves as `null` or `undefined`
+ * - escaped result of `value.<span class="apidocCodeKeywordSpan">toString</span>()`, if the `value` isn&#x27;t a string
+ * - escaped string version, if `value` is a string.
+ *
+ *  The result is not escaped, if `raw` was passed in as `true`.
+ */
+text: (value, raw) =&#x3e; {
+    value = resolveFunc(value);
+    if (isNull(value)) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.special" id="apidoc.module.pg-promise.special">module pg-promise.special</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.special.SpecialQuery" id="apidoc.element.pg-promise.special.SpecialQuery">
+        function <span class="apidocSignatureSpan">pg-promise.special.</span>SpecialQuery
+        <span class="apidocSignatureSpan">(type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SpecialQuery(type) {
+    this.isStream = type === &#x27;stream&#x27;;
+    this.isResult = type === &#x27;result&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.txMode" id="apidoc.module.pg-promise.txMode">module pg-promise.txMode</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.txMode.TransactionMode" id="apidoc.element.pg-promise.txMode.TransactionMode">
+        function <span class="apidocSignatureSpan">pg-promise.txMode.</span>TransactionMode
+        <span class="apidocSignatureSpan">(tiLevel, readOnly, deferrable)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function TransactionMode(tiLevel, readOnly, deferrable) {
+
+    if (!(this instanceof TransactionMode)) {
+        return new TransactionMode(tiLevel, readOnly, deferrable);
+    }
+
+    if (tiLevel &#x26;&#x26; typeof tiLevel === &#x27;object&#x27;) {
+        readOnly = tiLevel.readOnly;
+        deferrable = tiLevel.deferrable;
+        tiLevel = tiLevel.tiLevel;
+    }
+
+    var level, accessMode, deferrableMode, capBegin, begin = &#x27;begin&#x27;;
+
+    tiLevel = (tiLevel &#x3e; 0) ? parseInt(tiLevel) : 0;
+
+    if (tiLevel &#x3e; 0 &#x26;&#x26; tiLevel &#x3c; 4) {
+        var values = [&#x27;serializable&#x27;, &#x27;repeatable read&#x27;, &#x27;read committed&#x27;];
+        level = &#x27;isolation level &#x27; + values[tiLevel - 1];
+    }
+
+    if (readOnly) {
+        accessMode = &#x27;read only&#x27;;
+    } else {
+        if (readOnly !== undefined) {
+            accessMode = &#x27;read write&#x27;;
+        }
+    }
+
+    // From the official documentation: http://www.postgresql.org/docs/9.5/static/sql-set-transaction.html
+    // The DEFERRABLE transaction property has no effect unless the transaction is also SERIALIZABLE and READ ONLY
+    if (tiLevel === isolationLevel.serializable &#x26;&#x26; readOnly) {
+        if (deferrable) {
+            deferrableMode = &#x27;deferrable&#x27;;
+        } else {
+            if (deferrable !== undefined) {
+                deferrableMode = &#x27;not deferrable&#x27;;
+            }
+        }
+    }
+
+    if (level) {
+        begin += &#x27; &#x27; + level;
+    }
+
+    if (accessMode) {
+        begin += &#x27; &#x27; + accessMode;
+    }
+
+    if (deferrableMode) {
+        begin += &#x27; &#x27; + deferrableMode;
+    }
+
+    capBegin = begin.toUpperCase();
+
+    this.begin = cap =&#x3e; {
+        return cap ? capBegin : begin;
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pg-promise.utils" id="apidoc.module.pg-promise.utils">module pg-promise.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.utils.buildSqlModule" id="apidoc.element.pg-promise.utils.buildSqlModule">
+        function <span class="apidocSignatureSpan">pg-promise.utils.</span>buildSqlModule
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function buildSqlModule(config) {
+
+    if ($npm.utils.isText(config)) {
+        var path = $npm.utils.isPathAbsolute(config) ? config : $npm.path.join($npm.utils.startDir, config);
+        config = require(path);
+    } else {
+        if ($npm.utils.isNull(config)) {
+            var defConfig = $npm.path.join($npm.utils.startDir, &#x27;sql-config.json&#x27;);
+            // istanbul ignore else;
+            if (!$npm.fs.existsSync(defConfig)) {
+                throw new Error(&#x27;Default SQL configuration file not found: &#x27; + defConfig);
+            }
+            // cannot test this automatically, because it requires that file &#x27;sql-config.json&#x27;
+            // resides within the Jasmine folder, since it is the client during the test.
+            // istanbul ignore next;
+            config = require(defConfig);
+        } else {
+            if (!config || typeof config !== &#x27;object&#x27;) {
+                throw new TypeError(&#x27;Invalid parameter \&#x27;config\&#x27; specified.&#x27;);
+            }
+        }
+    }
+
+    if (!$npm.utils.isText(config.dir)) {
+        throw new Error(&#x27;Property \&#x27;dir\&#x27; must be a non-empty string.&#x27;);
+    }
+
+    var total = 0;
+
+    var tree = enumSql(config.dir, {recursive: config.recursive, ignoreErrors: config.ignoreErrors}, () =&#x3e; {
+        total++;
+    });
+
+    var modulePath = &#x27;./loadSql&#x27;, moduleName = &#x27;load&#x27;;
+    if (config.module &#x26;&#x26; typeof config.module === &#x27;object&#x27;) {
+        if ($npm.utils.isText(config.module.path)) {
+            modulePath = config.module.path;
+        }
+        if ($npm.utils.isText(config.module.name)) {
+            moduleName = config.module.name;
+        }
+    }
+
+    var d = new Date();
+
+    var header =
+        &#x27;/////////////////////////////////////////////////////////////////////////&#x27; + EOL +
+        &#x27;// This file was automatically generated by pg-promise v.&#x27; + $npm.package.version + EOL +
+        &#x27;//&#x27; + EOL +
+        &#x27;// Generated on: &#x27; + d.toLocaleDateString() + &#x27;, at &#x27; + d.toLocaleTimeString() + EOL +
+        &#x27;// Total files: &#x27; + total + EOL +
+        &#x27;//&#x27; + EOL +
+        &#x27;// API: http://vitaly-t.github.io/pg-promise/utils.html#.buildSqlModule&#x27; + EOL +
+        &#x27;/////////////////////////////////////////////////////////////////////////&#x27; + EOL + EOL +
+        &#x27;\&#x27;use strict\&#x27;;&#x27; + EOL + EOL +
+        &#x27;var &#x27; + moduleName + &#x27; = require(\&#x27;&#x27; + modulePath + &#x27;\&#x27;);&#x27; + EOL + EOL +
+        &#x27;module.exports = &#x27;;
+
+    var code = header + objectToCode(tree, value =&#x3e; {
+            return moduleName + &#x27;(&#x27; + JSON.stringify(value) + &#x27;)&#x27;;
+        }) + &#x27;;&#x27;;
+
+    if ($npm.utils.isText(config.output)) {
+        var p = config.output;
+        if (!$npm.utils.isPathAbsolute(p)) {
+            p = $npm.path.join($npm.utils.startDir, p);
+        }
+        $npm.fs.writeFileSync(p, code);
+    }
+
+    return code;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.utils.camelize" id="apidoc.element.pg-promise.utils.camelize">
+        function <span class="apidocSignatureSpan">pg-promise.utils.</span>camelize
+        <span class="apidocSignatureSpan">(text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function camelize(text) {
+    text = text.replace(/[\-_\s\.]+(.)?/g, (match, chr) =&#x3e; {
+        return chr ? chr.toUpperCase() : &#x27;&#x27;;
+    });
+    return text.substr(0, 1).toLowerCase() + text.substr(1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*         camelizeColumns(data);
+*     }
+* };
+*
+* function camelizeColumns(data) {
+*     var template = data[0];
+*     for (var prop in template) {
+*         var camel = pgp.utils.<span class="apidocCodeKeywordSpan">camelize</span>(prop);
+*         if (!(camel in template)) {
+*             for (var i = 0; i &#x3c; data.length; i++) {
+*                 var d = data[i];
+*                 d[camel] = d[prop];
+*                 delete d[prop];
+*             }
+*         }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.utils.camelizeVar" id="apidoc.element.pg-promise.utils.camelizeVar">
+        function <span class="apidocSignatureSpan">pg-promise.utils.</span>camelizeVar
+        <span class="apidocSignatureSpan">(text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function camelizeVar(text) {
+    text = text.replace(/[^a-zA-Z0-9\$_\-\s\.]/g, &#x27;&#x27;).replace(/^[0-9_\-\s\.]+/, &#x27;&#x27;);
+    return camelize(text);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.utils.enumSql" id="apidoc.element.pg-promise.utils.enumSql">
+        function <span class="apidocSignatureSpan">pg-promise.utils.</span>enumSql
+        <span class="apidocSignatureSpan">(dir, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function enumSql(dir, options, cb) {
+    if (!$npm.utils.isText(dir)) {
+        throw new TypeError(&#x27;Parameter \&#x27;dir\&#x27; must be a non-empty text string.&#x27;);
+    }
+    if (!options || typeof options !== &#x27;object&#x27;) {
+        options = {};
+    }
+    cb = (typeof cb === &#x27;function&#x27;) ? cb : null;
+    return _enumSql(dir, options, cb, &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pg-promise.utils.objectToCode" id="apidoc.element.pg-promise.utils.objectToCode">
+        function <span class="apidocSignatureSpan">pg-promise.utils.</span>objectToCode
+        <span class="apidocSignatureSpan">(obj, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function objectToCode(obj, cb) {
+
+    if (!obj || typeof obj !== &#x27;object&#x27;) {
+        throw new TypeError(&#x27;Parameter \&#x27;obj\&#x27; must be a non-null object.&#x27;);
+    }
+
+    cb = (typeof cb === &#x27;function&#x27;) ? cb : null;
+
+    return &#x27;{&#x27; + generate(obj, 1) + EOL + &#x27;}&#x27;;
+
+    function generate(obj, level) {
+        var code = &#x27;&#x27;, gap = $npm.utils.messageGap(level);
+        var idx = 0;
+        for (var prop in obj) {
+            var value = obj[prop];
+            if (idx) {
+                code += &#x27;,&#x27;;
+            }
+            if (value &#x26;&#x26; typeof value === &#x27;object&#x27;) {
+                code += EOL + gap + prop + &#x27;: {&#x27;;
+                code += generate(value, level + 1);
+                code += EOL + gap + &#x27;}&#x27;;
+            } else {
+                code += EOL + gap + prop + &#x27;: &#x27;;
+                if (cb) {
+                    code += cb(value, prop, obj);
+                } else {
+                    code += JSON.stringify(value);
+                }
+            }
+            idx++;
+        }
+        return code;
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
