@@ -1,8 +1,8 @@
 # npmdoc-pg-promise
 
-api documentation for  [pg-promise (v5.6.4)](https://github.com/vitaly-t/pg-promise)  [![npm package](https://img.shields.io/npm/v/npmdoc-pg-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pg-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pg-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pg-promise)
+#### basic api documentation for  [pg-promise (v5.6.7)](https://github.com/vitaly-t/pg-promise)  [![npm package](https://img.shields.io/npm/v/npmdoc-pg-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pg-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pg-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pg-promise)
 
-Promises interface for PostgreSQL
+#### Promises interface for PostgreSQL
 
 [![NPM](https://nodei.co/npm/pg-promise.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/pg-promise)
 
@@ -48,8 +48,8 @@ Promises interface for PostgreSQL
     },
     "directories": {},
     "dist": {
-        "shasum": "80b18a2a1bdd9af7fb0087e01a1b87ada8559a71",
-        "tarball": "https://registry.npmjs.org/pg-promise/-/pg-promise-5.6.4.tgz"
+        "shasum": "e5700066d0b711957e5224b1039b14ddb12df54a",
+        "tarball": "https://registry.npmjs.org/pg-promise/-/pg-promise-5.6.7.tgz"
     },
     "engines": {
         "node": ">=4.0",
@@ -59,7 +59,7 @@ Promises interface for PostgreSQL
         "lib",
         "typescript"
     ],
-    "gitHead": "2e381403ff346114e169884e6ab8613989cb5356",
+    "gitHead": "19ec2930a40efd7c66157fb781ec3b319028165a",
     "homepage": "https://github.com/vitaly-t/pg-promise",
     "keywords": [
         "pg",
@@ -88,7 +88,8 @@ Promises interface for PostgreSQL
         "travis": "npm run lint && istanbul cover ./node_modules/jasmine-node/bin/jasmine-node test --captureExceptions && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
     },
     "typings": "typescript/pg-promise.d.ts",
-    "version": "5.6.4"
+    "version": "5.6.7",
+    "bin": {}
 }
 ```
 
